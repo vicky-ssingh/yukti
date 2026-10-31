@@ -1,0 +1,51 @@
+/* App-wide motion: entrances, staggered cards, growing bars and press feedback.
+   Everything here runs only when the system allows motion; with reduced motion the UI is identical, just still. */
+
+@keyframes view-in { from { opacity: 0; transform: translateY(8px); } }
+@keyframes card-in { from { opacity: 0; transform: translateY(10px) scale(.985); } }
+@keyframes rise-in { from { opacity: 0; transform: translateY(14px); } }
+@keyframes fade-in { from { opacity: 0; } }
+@keyframes grow-x { from { transform: scaleX(0); } }
+@keyframes grow-y { from { transform: scaleY(0); } }
+@keyframes float-y { 50% { translate: 0 -6px; } }
+@keyframes nav-pick { from { box-shadow: inset 0 0 0 1px var(--accent-line), 0 0 0 4px var(--accent-soft); } }
+@keyframes badge-pop { 50% { transform: scale(1.12); } }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Screens and views */
+  .app:not([hidden]), .login:not([hidden]) { animation: fade-in .4s ease-out backwards; }
+  .view:not([hidden]):not(.chat-view), .page { animation: view-in .34s cubic-bezier(.2, .8, .2, 1) backwards; }
+
+
+  /* Cards and tiles arrive in a short sequence */
+  :is(.kpi-grid, .stat-grid, .stack, .welcome-topics, .usage-grid, .panel-grid, .glance) > * { animation: card-in .45s cubic-bezier(.2, .8, .2, 1) backwards; }
+  :is(.kpi-grid, .stat-grid, .stack, .welcome-topics, .usage-grid, .panel-grid, .glance) > :nth-child(2) { animation-delay: .04s; }
+  :is(.kpi-grid, .stat-grid, .stack, .welcome-topics, .usage-grid, .panel-grid, .glance) > :nth-child(3) { animation-delay: .08s; }
+  :is(.kpi-grid, .stat-grid, .stack, .welcome-topics, .usage-grid, .panel-grid, .glance) > :nth-child(4) { animation-delay: .12s; }
+  :is(.kpi-grid, .stat-grid, .stack, .welcome-topics, .usage-grid, .panel-grid, .glance) > :nth-child(5) { animation-delay: .16s; }
+  :is(.kpi-grid, .stat-grid, .stack, .welcome-topics, .usage-grid, .panel-grid, .glance) > :nth-child(6) { animation-delay: .2s; }
+  :is(.kpi-grid, .stat-grid, .stack, .welcome-topics, .usage-grid, .panel-grid, .glance) > :nth-child(7) { animation-delay: .24s; }
+  :is(.kpi-grid, .stat-grid, .stack, .welcome-topics, .usage-grid, .panel-grid, .glance) > :nth-child(n+8) { animation-delay: .28s; }
+  .welcome > :is(.welcome-mark, h2, p) { animation: rise-in .5s cubic-bezier(.2, .8, .2, 1) backwards; }
+  .welcome-mark { animation: rise-in .5s cubic-bezier(.2, .8, .2, 1) backwards, float-y 5s ease-in-out .6s infinite !important; }
+
+  /* Data marks grow from their baseline */
+  :is(.bar-fill, .kpi .split-bar, .run-token-track .split-bar, .share-track .split-bar, .outcome-meter) { transform-origin: left center; animation: grow-x .8s cubic-bezier(.2, .8, .2, 1) .12s backwards; }
+  .chart-svg.is-entering .col { transform-box: fill-box; transform-origin: 50% 100%; animation: grow-y .6s cubic-bezier(.2, .8, .2, 1) backwards; animation-delay: calc(var(--i, 0) * 14ms); }
+
+  /* Hover and press feedback */
+  :is(.primary, .secondary, .ghost, .danger, .icon-button, .empty-action, .demo-tile, .suggestion, .range-switch button, .role-switch button, .bar-row, .nav-item):active:not(:disabled) { scale: .97; }
+  .nav-item .icon { transition: transform .2s cubic-bezier(.3, 1.4, .5, 1); }
+  .nav-item:hover .icon { transform: translateX(2px) scale(1.06); }
+  .nav-item[aria-current="page"] { animation: nav-pick .5s ease-out; }
+  .run-card, .card.record { transition: transform .2s, box-shadow .2s, border-color .2s; }
+  .run-card:hover, .card.record:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); border-color: var(--accent-line); }
+  .stat { transition: transform .2s, border-color .2s, box-shadow .2s; }
+  .stat:hover { box-shadow: var(--shadow-lg); }
+  .badge.is-pop { animation: badge-pop .4s ease-out; }
+
+  /* Theme switch: colours cross-fade briefly (class set by CD.setTheme) */
+  .theme-fade, .theme-fade *, .theme-fade *::before, .theme-fade *::after {
+    transition: background-color .35s ease, color .35s ease, border-color .35s ease, fill .35s ease, box-shadow .35s ease !important;
+  }
+}

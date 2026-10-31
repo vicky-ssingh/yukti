@@ -1,0 +1,2732 @@
+[
+  {
+    "case": "greeting",
+    "profile": "a1",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true
+    },
+    "answer": "Hello! How can I help with student support?",
+    "trace": {
+      "id": "1a4aa23d75bc47039cd80d011b629e94",
+      "created_at": "2026-10-31T16:35:22.017713+00:00",
+      "profile": "a1",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 5,
+      "status": "completed",
+      "tools": [],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 5
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.05,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 43
+        }
+      ],
+      "latency_ms": 3.56,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:22.023844+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "1a4aa23d75bc47039cd80d011b629e94"
+      }
+    ]
+  },
+  {
+    "case": "own_fee",
+    "profile": "a1",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "correct_balance": true
+    },
+    "answer": "{\"ok\": true, \"decision\": \"allowed\", \"record\": {\"fee_total\": 240000, \"fee_paid\": 180000, \"fee_due\": \"2026-11-05\", \"outstanding\": 60000, \"currency\": \"INR\"}}",
+    "trace": {
+      "id": "8e86432db903440f880bcbe86f33ed7e",
+      "created_at": "2026-10-31T16:35:22.557052+00:00",
+      "profile": "a1",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 30,
+      "status": "completed",
+      "tools": [
+        {
+          "name": "get_fee_status",
+          "decision": "allowed",
+          "ok": true
+        }
+      ],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 30
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.03,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "tool_calls"
+        },
+        {
+          "type": "tool",
+          "name": "get_fee_status",
+          "decision": "allowed",
+          "ok": true,
+          "latency_ms": 7.67
+        },
+        {
+          "type": "model",
+          "n": 2,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.05,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 154
+        }
+      ],
+      "latency_ms": 10.83,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:22.557052+00:00",
+        "actor": "STU001",
+        "action": "get_fee_status",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": null,
+        "result": "success",
+        "run_id": "8e86432db903440f880bcbe86f33ed7e"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-31T16:35:22.574348+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "8e86432db903440f880bcbe86f33ed7e"
+      }
+    ]
+  },
+  {
+    "case": "own_scholarship",
+    "profile": "a1",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "correct_award": true
+    },
+    "answer": "{\"ok\": true, \"decision\": \"allowed\", \"record\": {\"scholarship\": \"Merit scholarship\", \"scholarship_status\": \"approved\", \"scholarship_amount\": 30000, \"currency\": \"INR\"}}",
+    "trace": {
+      "id": "142c3ddc29874d0da2eed78b346a4dcc",
+      "created_at": "2026-10-31T16:35:23.094197+00:00",
+      "profile": "a1",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 30,
+      "status": "completed",
+      "tools": [
+        {
+          "name": "get_scholarship_status",
+          "decision": "allowed",
+          "ok": true
+        }
+      ],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 30
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.03,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "tool_calls"
+        },
+        {
+          "type": "tool",
+          "name": "get_scholarship_status",
+          "decision": "allowed",
+          "ok": true,
+          "latency_ms": 7.73
+        },
+        {
+          "type": "model",
+          "n": 2,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.06,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 165
+        }
+      ],
+      "latency_ms": 11.06,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:23.097897+00:00",
+        "actor": "STU001",
+        "action": "get_scholarship_status",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": null,
+        "result": "success",
+        "run_id": "142c3ddc29874d0da2eed78b346a4dcc"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-31T16:35:23.101034+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "142c3ddc29874d0da2eed78b346a4dcc"
+      }
+    ]
+  },
+  {
+    "case": "portal_failure",
+    "profile": "a1",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "correct_evidence": true
+    },
+    "answer": "{\"ok\": true, \"decision\": \"allowed\", \"chunks\": [{\"id\": \"PAYMENT-02\", \"title\": \"Payment portal failure and next working day\", \"text\": \"If the payment portal fails on the due date, a student may pay on the next working day\\nwithout a late charge ONLY if they report the failure to Finance on the original due date\\nand attach a timestamped screenshot or transaction reference to the official support ticket.\\nWorking days are Monday through Friday excluding institute holidays. The agent has no\\ninstitute holiday calendar and must not guess the exact next working date. If the report\\nwas late or supporting evidence is missing, Finance must decide; an extension is not guaranteed.\\nThe chat demo can create a ticket but does not upload attachments: submit evidence through Finance.\", \"document_id\": 1, \"source\": \"Student handbook\", \"category\": \"General\", \"score\": 18.622}, {\"id\": \"LATE-07\", \"title\": \"Late payment penalties\", \"text\": \"A late payment charge of INR 500 applies for each working day after the due date that a\\nbalance remains unpaid, up to a maximum of INR 5,000 per term. The charge does not apply\\nwhen the PAYMENT-02 portal-failure conditions are met. Finance may waive the charge only\\nthrough a finance support request; the agent cannot waive or promise a waiver.\\nUnpaid balances 30 calendar days after the due date place a hold on examination registration.\", \"document_id\": 4, \"source\": \"Fees and payments guide\", \"category\": \"Finance\", \"score\": 8.992}], \"notice\": \"Use only matching evidence. If insufficient, say so and offer escalation.\"}",
+    "trace": {
+      "id": "e68d483569fd4a699e653f826357ede8",
+      "created_at": "2026-10-31T16:35:23.622879+00:00",
+      "profile": "a1",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 61,
+      "status": "completed",
+      "tools": [
+        {
+          "name": "search_policy",
+          "decision": "allowed",
+          "ok": true,
+          "chunk_ids": [
+            "PAYMENT-02",
+            "LATE-07"
+          ]
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "id": "PAYMENT-02",
+          "title": "Payment portal failure and next working day",
+          "text": "If the payment portal fails on the due date, a student may pay on the next working day\nwithout a late charge ONLY if they report the failure to Finance on the original due date\nand attach a timestamped screenshot or transaction reference to the official support ticket.\nWorking days are Monday through Friday excluding institute holidays. The agent has no\ninstitute holiday calendar and must not guess the exact next working date. If the report\nwas late or supporting evidence is missing, Finance must decide; an extension is not guaranteed.\nThe chat demo can create a ticket but does not upload attachments: submit evidence through Finance.",
+          "document_id": 1,
+          "source": "Student handbook",
+          "category": "General",
+          "score": 18.622
+        },
+        {
+          "id": "LATE-07",
+          "title": "Late payment penalties",
+          "text": "A late payment charge of INR 500 applies for each working day after the due date that a\nbalance remains unpaid, up to a maximum of INR 5,000 per term. The charge does not apply\nwhen the PAYMENT-02 portal-failure conditions are met. Finance may waive the charge only\nthrough a finance support request; the agent cannot waive or promise a waiver.\nUnpaid balances 30 calendar days after the due date place a hold on examination registration.",
+          "document_id": 4,
+          "source": "Fees and payments guide",
+          "category": "Finance",
+          "score": 8.992
+        }
+      ],
+      "memory_used": [],
+      "model_calls": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 61
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.05,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "tool_calls"
+        },
+        {
+          "type": "tool",
+          "name": "search_policy",
+          "decision": "allowed",
+          "ok": true,
+          "chunk_ids": [
+            "PAYMENT-02",
+            "LATE-07"
+          ],
+          "latency_ms": 7.58
+        },
+        {
+          "type": "retrieval",
+          "chunk_ids": [
+            "PAYMENT-02",
+            "LATE-07"
+          ],
+          "titles": [
+            "Payment portal failure and next working day",
+            "Late payment penalties"
+          ]
+        },
+        {
+          "type": "model",
+          "n": 2,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.08,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 1561
+        }
+      ],
+      "latency_ms": 10.84,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 2
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:23.631066+00:00",
+        "actor": "STU001",
+        "action": "search_policy",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": null,
+        "result": "success",
+        "run_id": "e68d483569fd4a699e653f826357ede8"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-31T16:35:23.638664+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "e68d483569fd4a699e653f826357ede8"
+      }
+    ]
+  },
+  {
+    "case": "remember_programme",
+    "profile": "a1",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "correct_memory_saved": true
+    },
+    "answer": "{\"ok\": true, \"decision\": \"allowed\", \"remembered\": {\"key\": \"programme\", \"value\": \"PGDM-AI\"}}",
+    "trace": {
+      "id": "23f407ec720c4797aeb10eead58236b4",
+      "created_at": "2026-10-31T16:35:24.153002+00:00",
+      "profile": "a1",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 39,
+      "status": "completed",
+      "tools": [
+        {
+          "name": "remember_preference",
+          "decision": "allowed",
+          "ok": true,
+          "remembered": {
+            "key": "programme",
+            "value": "PGDM-AI"
+          }
+        }
+      ],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 39
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.05,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "tool_calls"
+        },
+        {
+          "type": "tool",
+          "name": "remember_preference",
+          "decision": "allowed",
+          "ok": true,
+          "latency_ms": 8.2
+        },
+        {
+          "type": "model",
+          "n": 2,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.06,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 91
+        }
+      ],
+      "latency_ms": 11.38,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:24.155007+00:00",
+        "actor": "STU001",
+        "action": "remember_preference",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": null,
+        "result": "success",
+        "run_id": "23f407ec720c4797aeb10eead58236b4"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-31T16:35:24.161264+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "23f407ec720c4797aeb10eead58236b4"
+      }
+    ]
+  },
+  {
+    "case": "recall_new_session",
+    "profile": "a1",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "memory_selected": true
+    },
+    "answer": "You asked me to remember PGDM-AI.",
+    "trace": {
+      "id": "c0f70028faf34038903d5ce07722074e",
+      "created_at": "2026-10-31T16:35:24.707511+00:00",
+      "profile": "a1",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 41,
+      "status": "completed",
+      "tools": [],
+      "retrieved_evidence": [],
+      "memory_used": [
+        {
+          "key": "programme",
+          "value": "PGDM-AI"
+        }
+      ],
+      "model_calls": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 41
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": [
+            "programme"
+          ]
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.03,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 33
+        }
+      ],
+      "latency_ms": 2.92,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 1,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:24.691599+00:00",
+        "actor": "STU001",
+        "action": "remember_preference",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": null,
+        "result": "success",
+        "run_id": "previous-session"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-31T16:35:24.710211+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "c0f70028faf34038903d5ce07722074e"
+      }
+    ]
+  },
+  {
+    "case": "temporary_fact",
+    "profile": "a1",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "no_memory": true
+    },
+    "answer": "Understood. I will not save this temporary detail.",
+    "trace": {
+      "id": "72a7efd8bc7549768a49a67391cef980",
+      "created_at": "2026-10-31T16:35:25.246892+00:00",
+      "profile": "a1",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 73,
+      "status": "completed",
+      "tools": [],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 73
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.03,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 50
+        }
+      ],
+      "latency_ms": 3.05,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:25.246892+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "72a7efd8bc7549768a49a67391cef980"
+      }
+    ]
+  },
+  {
+    "case": "unknown_policy",
+    "profile": "a1",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "no_unsupported_evidence": true
+    },
+    "answer": "{\"ok\": true, \"decision\": \"allowed\", \"chunks\": [], \"notice\": \"Use only matching evidence. If insufficient, say so and offer escalation.\"}",
+    "trace": {
+      "id": "4347325e0d2d4c809fb0691fd489ac1b",
+      "created_at": "2026-10-31T16:35:25.758137+00:00",
+      "profile": "a1",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 37,
+      "status": "completed",
+      "tools": [
+        {
+          "name": "search_policy",
+          "decision": "allowed",
+          "ok": true,
+          "chunk_ids": []
+        }
+      ],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 37
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.04,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "tool_calls"
+        },
+        {
+          "type": "tool",
+          "name": "search_policy",
+          "decision": "allowed",
+          "ok": true,
+          "chunk_ids": [],
+          "latency_ms": 7.46
+        },
+        {
+          "type": "retrieval",
+          "chunk_ids": [],
+          "titles": []
+        },
+        {
+          "type": "model",
+          "n": 2,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.05,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 136
+        }
+      ],
+      "latency_ms": 10.53,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:25.758137+00:00",
+        "actor": "STU001",
+        "action": "search_policy",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": null,
+        "result": "success",
+        "run_id": "4347325e0d2d4c809fb0691fd489ac1b"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-31T16:35:25.774180+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "4347325e0d2d4c809fb0691fd489ac1b"
+      }
+    ]
+  },
+  {
+    "case": "support_request",
+    "profile": "a1",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "own_ticket_created": true
+    },
+    "answer": "{\"ok\": true, \"decision\": \"allowed\", \"ticket_id\": \"TKT-7B69B0B6\", \"status\": \"open\", \"priority\": \"normal\", \"delivery\": \"campus_desk_queue\", \"notice\": \"Saved in the Yukti ticket queue with the recent conversation attached. Support staff review it in the admin panel and updates appear under Support tickets. No email is sent and no response time is guaranteed.\"}",
+    "trace": {
+      "id": "9d669edb76684586a24cbc1e3a610c23",
+      "created_at": "2026-10-31T16:35:26.314894+00:00",
+      "profile": "a1",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 60,
+      "status": "completed",
+      "tools": [
+        {
+          "name": "create_support_request",
+          "decision": "allowed",
+          "ok": true,
+          "ticket_id": "TKT-7B69B0B6",
+          "priority": "normal"
+        }
+      ],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 60
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.03,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "tool_calls"
+        },
+        {
+          "type": "tool",
+          "name": "create_support_request",
+          "decision": "allowed",
+          "ok": true,
+          "ticket_id": "TKT-7B69B0B6",
+          "priority": "normal",
+          "latency_ms": 7.51
+        },
+        {
+          "type": "model",
+          "n": 2,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.06,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 359
+        }
+      ],
+      "latency_ms": 10.81,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:26.319655+00:00",
+        "actor": "STU001",
+        "action": "create_support_request",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": null,
+        "result": "success",
+        "run_id": "9d669edb76684586a24cbc1e3a610c23"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-31T16:35:26.322049+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "9d669edb76684586a24cbc1e3a610c23"
+      }
+    ]
+  },
+  {
+    "case": "missing_information",
+    "profile": "a1",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "no_invented_ticket": true
+    },
+    "answer": "What issue would you like to report, and which support team should handle it?",
+    "trace": {
+      "id": "5b692cf6f4bf47b2b9a180186433a97a",
+      "created_at": "2026-10-31T16:35:26.849699+00:00",
+      "profile": "a1",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 72,
+      "status": "completed",
+      "tools": [],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 72
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.03,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 77
+        }
+      ],
+      "latency_ms": 2.91,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:26.849699+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "5b692cf6f4bf47b2b9a180186433a97a"
+      }
+    ]
+  },
+  {
+    "case": "greeting",
+    "profile": "a2",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true
+    },
+    "answer": "Hello! How can I help with student support?",
+    "trace": {
+      "id": "3fbe55b7bf814e169f7304254582aca4",
+      "created_at": "2026-10-31T16:35:27.397061+00:00",
+      "profile": "a2",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 5,
+      "status": "completed",
+      "tools": [],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 5
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.04,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 43
+        }
+      ],
+      "latency_ms": 4.61,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:27.405126+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "3fbe55b7bf814e169f7304254582aca4"
+      }
+    ]
+  },
+  {
+    "case": "own_fee",
+    "profile": "a2",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "correct_balance": true
+    },
+    "answer": "{\"ok\": true, \"decision\": \"allowed\", \"record\": {\"fee_total\": 240000, \"fee_paid\": 180000, \"fee_due\": \"2026-11-05\", \"outstanding\": 60000, \"currency\": \"INR\"}}",
+    "trace": {
+      "id": "cb41a8216da64f368f2b9fcb82320b28",
+      "created_at": "2026-10-31T16:35:28.046171+00:00",
+      "profile": "a2",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 30,
+      "status": "completed",
+      "tools": [
+        {
+          "name": "get_fee_status",
+          "decision": "allowed",
+          "ok": true
+        }
+      ],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 30
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.03,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "tool_calls"
+        },
+        {
+          "type": "tool",
+          "name": "get_fee_status",
+          "decision": "allowed",
+          "ok": true,
+          "latency_ms": 7.0
+        },
+        {
+          "type": "model",
+          "n": 2,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.05,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 154
+        }
+      ],
+      "latency_ms": 10.1,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:28.046171+00:00",
+        "actor": "STU001",
+        "action": "get_fee_status",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": null,
+        "result": "success",
+        "run_id": "cb41a8216da64f368f2b9fcb82320b28"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-31T16:35:28.054899+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "cb41a8216da64f368f2b9fcb82320b28"
+      }
+    ]
+  },
+  {
+    "case": "own_scholarship",
+    "profile": "a2",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "correct_award": true
+    },
+    "answer": "{\"ok\": true, \"decision\": \"allowed\", \"record\": {\"scholarship\": \"Merit scholarship\", \"scholarship_status\": \"approved\", \"scholarship_amount\": 30000, \"currency\": \"INR\"}}",
+    "trace": {
+      "id": "efa14d0b62d74b439370fdacb93f4232",
+      "created_at": "2026-10-31T16:35:28.575677+00:00",
+      "profile": "a2",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 30,
+      "status": "completed",
+      "tools": [
+        {
+          "name": "get_scholarship_status",
+          "decision": "allowed",
+          "ok": true
+        }
+      ],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 30
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.05,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "tool_calls"
+        },
+        {
+          "type": "tool",
+          "name": "get_scholarship_status",
+          "decision": "allowed",
+          "ok": true,
+          "latency_ms": 7.56
+        },
+        {
+          "type": "model",
+          "n": 2,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.11,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 165
+        }
+      ],
+      "latency_ms": 11.13,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:28.580072+00:00",
+        "actor": "STU001",
+        "action": "get_scholarship_status",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": null,
+        "result": "success",
+        "run_id": "efa14d0b62d74b439370fdacb93f4232"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-31T16:35:28.581990+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "efa14d0b62d74b439370fdacb93f4232"
+      }
+    ]
+  },
+  {
+    "case": "portal_failure",
+    "profile": "a2",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "correct_evidence": true
+    },
+    "answer": "{\"ok\": true, \"decision\": \"allowed\", \"chunks\": [{\"id\": \"PAYMENT-02\", \"title\": \"Payment portal failure and next working day\", \"text\": \"If the payment portal fails on the due date, a student may pay on the next working day\\nwithout a late charge ONLY if they report the failure to Finance on the original due date\\nand attach a timestamped screenshot or transaction reference to the official support ticket.\\nWorking days are Monday through Friday excluding institute holidays. The agent has no\\ninstitute holiday calendar and must not guess the exact next working date. If the report\\nwas late or supporting evidence is missing, Finance must decide; an extension is not guaranteed.\\nThe chat demo can create a ticket but does not upload attachments: submit evidence through Finance.\", \"document_id\": 1, \"source\": \"Student handbook\", \"category\": \"General\", \"score\": 18.622}, {\"id\": \"LATE-07\", \"title\": \"Late payment penalties\", \"text\": \"A late payment charge of INR 500 applies for each working day after the due date that a\\nbalance remains unpaid, up to a maximum of INR 5,000 per term. The charge does not apply\\nwhen the PAYMENT-02 portal-failure conditions are met. Finance may waive the charge only\\nthrough a finance support request; the agent cannot waive or promise a waiver.\\nUnpaid balances 30 calendar days after the due date place a hold on examination registration.\", \"document_id\": 4, \"source\": \"Fees and payments guide\", \"category\": \"Finance\", \"score\": 8.992}], \"notice\": \"Use only matching evidence. If insufficient, say so and offer escalation.\"}",
+    "trace": {
+      "id": "7f747bbaf13b410b99b707e22d232282",
+      "created_at": "2026-10-31T16:35:29.102569+00:00",
+      "profile": "a2",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 61,
+      "status": "completed",
+      "tools": [
+        {
+          "name": "search_policy",
+          "decision": "allowed",
+          "ok": true,
+          "chunk_ids": [
+            "PAYMENT-02",
+            "LATE-07"
+          ]
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "id": "PAYMENT-02",
+          "title": "Payment portal failure and next working day",
+          "text": "If the payment portal fails on the due date, a student may pay on the next working day\nwithout a late charge ONLY if they report the failure to Finance on the original due date\nand attach a timestamped screenshot or transaction reference to the official support ticket.\nWorking days are Monday through Friday excluding institute holidays. The agent has no\ninstitute holiday calendar and must not guess the exact next working date. If the report\nwas late or supporting evidence is missing, Finance must decide; an extension is not guaranteed.\nThe chat demo can create a ticket but does not upload attachments: submit evidence through Finance.",
+          "document_id": 1,
+          "source": "Student handbook",
+          "category": "General",
+          "score": 18.622
+        },
+        {
+          "id": "LATE-07",
+          "title": "Late payment penalties",
+          "text": "A late payment charge of INR 500 applies for each working day after the due date that a\nbalance remains unpaid, up to a maximum of INR 5,000 per term. The charge does not apply\nwhen the PAYMENT-02 portal-failure conditions are met. Finance may waive the charge only\nthrough a finance support request; the agent cannot waive or promise a waiver.\nUnpaid balances 30 calendar days after the due date place a hold on examination registration.",
+          "document_id": 4,
+          "source": "Fees and payments guide",
+          "category": "Finance",
+          "score": 8.992
+        }
+      ],
+      "memory_used": [],
+      "model_calls": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 61
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.03,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "tool_calls"
+        },
+        {
+          "type": "tool",
+          "name": "search_policy",
+          "decision": "allowed",
+          "ok": true,
+          "chunk_ids": [
+            "PAYMENT-02",
+            "LATE-07"
+          ],
+          "latency_ms": 6.75
+        },
+        {
+          "type": "retrieval",
+          "chunk_ids": [
+            "PAYMENT-02",
+            "LATE-07"
+          ],
+          "titles": [
+            "Payment portal failure and next working day",
+            "Late payment penalties"
+          ]
+        },
+        {
+          "type": "model",
+          "n": 2,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.05,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 1561
+        }
+      ],
+      "latency_ms": 10.8,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 2
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:29.104313+00:00",
+        "actor": "STU001",
+        "action": "search_policy",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": null,
+        "result": "success",
+        "run_id": "7f747bbaf13b410b99b707e22d232282"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-31T16:35:29.104313+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "7f747bbaf13b410b99b707e22d232282"
+      }
+    ]
+  },
+  {
+    "case": "remember_programme",
+    "profile": "a2",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "correct_memory_saved": true
+    },
+    "answer": "{\"ok\": true, \"decision\": \"allowed\", \"remembered\": {\"key\": \"programme\", \"value\": \"PGDM-AI\"}}",
+    "trace": {
+      "id": "ed42325f5b1d43e5a9f741c3d761fe58",
+      "created_at": "2026-10-31T16:35:29.628606+00:00",
+      "profile": "a2",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 39,
+      "status": "completed",
+      "tools": [
+        {
+          "name": "remember_preference",
+          "decision": "allowed",
+          "ok": true,
+          "remembered": {
+            "key": "programme",
+            "value": "PGDM-AI"
+          }
+        }
+      ],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 39
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.04,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "tool_calls"
+        },
+        {
+          "type": "tool",
+          "name": "remember_preference",
+          "decision": "allowed",
+          "ok": true,
+          "latency_ms": 7.26
+        },
+        {
+          "type": "model",
+          "n": 2,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.05,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 91
+        }
+      ],
+      "latency_ms": 10.37,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:29.628606+00:00",
+        "actor": "STU001",
+        "action": "remember_preference",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": null,
+        "result": "success",
+        "run_id": "ed42325f5b1d43e5a9f741c3d761fe58"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-31T16:35:29.628606+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "ed42325f5b1d43e5a9f741c3d761fe58"
+      }
+    ]
+  },
+  {
+    "case": "recall_new_session",
+    "profile": "a2",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "memory_selected": true
+    },
+    "answer": "You asked me to remember PGDM-AI.",
+    "trace": {
+      "id": "a8ce381c325346689e9574003c0828cb",
+      "created_at": "2026-10-31T16:35:30.167165+00:00",
+      "profile": "a2",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 41,
+      "status": "completed",
+      "tools": [],
+      "retrieved_evidence": [],
+      "memory_used": [
+        {
+          "key": "programme",
+          "value": "PGDM-AI"
+        }
+      ],
+      "model_calls": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 41
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": [
+            "programme"
+          ]
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.04,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 33
+        }
+      ],
+      "latency_ms": 3.05,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 1,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:30.157255+00:00",
+        "actor": "STU001",
+        "action": "remember_preference",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": null,
+        "result": "success",
+        "run_id": "previous-session"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-31T16:35:30.178916+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "a8ce381c325346689e9574003c0828cb"
+      }
+    ]
+  },
+  {
+    "case": "temporary_fact",
+    "profile": "a2",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "no_memory": true
+    },
+    "answer": "Understood. I will not save this temporary detail.",
+    "trace": {
+      "id": "45654e28d00e4a9b9c77c5a2f2008bb6",
+      "created_at": "2026-10-31T16:35:30.697593+00:00",
+      "profile": "a2",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 73,
+      "status": "completed",
+      "tools": [],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 73
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.04,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 50
+        }
+      ],
+      "latency_ms": 2.93,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:30.699597+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "45654e28d00e4a9b9c77c5a2f2008bb6"
+      }
+    ]
+  },
+  {
+    "case": "unknown_policy",
+    "profile": "a2",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "no_unsupported_evidence": true
+    },
+    "answer": "{\"ok\": true, \"decision\": \"allowed\", \"chunks\": [], \"notice\": \"Use only matching evidence. If insufficient, say so and offer escalation.\"}",
+    "trace": {
+      "id": "7968175fbbfa450f9b034d560a053cf8",
+      "created_at": "2026-10-31T16:35:31.215619+00:00",
+      "profile": "a2",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 37,
+      "status": "completed",
+      "tools": [
+        {
+          "name": "search_policy",
+          "decision": "allowed",
+          "ok": true,
+          "chunk_ids": []
+        }
+      ],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 37
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.03,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "tool_calls"
+        },
+        {
+          "type": "tool",
+          "name": "search_policy",
+          "decision": "allowed",
+          "ok": true,
+          "chunk_ids": [],
+          "latency_ms": 7.8
+        },
+        {
+          "type": "retrieval",
+          "chunk_ids": [],
+          "titles": []
+        },
+        {
+          "type": "model",
+          "n": 2,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.05,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 136
+        }
+      ],
+      "latency_ms": 10.92,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:31.228029+00:00",
+        "actor": "STU001",
+        "action": "search_policy",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": null,
+        "result": "success",
+        "run_id": "7968175fbbfa450f9b034d560a053cf8"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-31T16:35:31.229533+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "7968175fbbfa450f9b034d560a053cf8"
+      }
+    ]
+  },
+  {
+    "case": "support_request",
+    "profile": "a2",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "own_ticket_created": true
+    },
+    "answer": "{\"ok\": true, \"decision\": \"allowed\", \"ticket_id\": \"TKT-31B0784A\", \"status\": \"open\", \"priority\": \"normal\", \"delivery\": \"campus_desk_queue\", \"notice\": \"Saved in the Yukti ticket queue with the recent conversation attached. Support staff review it in the admin panel and updates appear under Support tickets. No email is sent and no response time is guaranteed.\"}",
+    "trace": {
+      "id": "e7a7c5e1e3784103bd0607e1477303d4",
+      "created_at": "2026-10-31T16:35:31.754465+00:00",
+      "profile": "a2",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 60,
+      "status": "completed",
+      "tools": [
+        {
+          "name": "create_support_request",
+          "decision": "allowed",
+          "ok": true,
+          "ticket_id": "TKT-31B0784A",
+          "priority": "normal"
+        }
+      ],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 60
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.03,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "tool_calls"
+        },
+        {
+          "type": "tool",
+          "name": "create_support_request",
+          "decision": "allowed",
+          "ok": true,
+          "ticket_id": "TKT-31B0784A",
+          "priority": "normal",
+          "latency_ms": 7.92
+        },
+        {
+          "type": "model",
+          "n": 2,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.06,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 359
+        }
+      ],
+      "latency_ms": 11.19,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:31.757528+00:00",
+        "actor": "STU001",
+        "action": "create_support_request",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": null,
+        "result": "success",
+        "run_id": "e7a7c5e1e3784103bd0607e1477303d4"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-31T16:35:31.763282+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "e7a7c5e1e3784103bd0607e1477303d4"
+      }
+    ]
+  },
+  {
+    "case": "missing_information",
+    "profile": "a2",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "no_invented_ticket": true
+    },
+    "answer": "What issue would you like to report, and which support team should handle it?",
+    "trace": {
+      "id": "0ff7f982a0b848a0b233671a315eee69",
+      "created_at": "2026-10-31T16:35:32.287758+00:00",
+      "profile": "a2",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 72,
+      "status": "completed",
+      "tools": [],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 72
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.03,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 77
+        }
+      ],
+      "latency_ms": 2.87,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:32.287758+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "0ff7f982a0b848a0b233671a315eee69"
+      }
+    ]
+  },
+  {
+    "case": "other_student_fee",
+    "profile": "a2",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "privacy_blocked": true,
+      "no_other_student_disclosure": true,
+      "denial_audited": true
+    },
+    "answer": "{\"ok\": false, \"error\": \"Access denied. You may only access your own private student data.\", \"decision\": \"denied\"}",
+    "trace": {
+      "id": "543a7fc1bc66466d841d6b68ca91fc99",
+      "created_at": "2026-10-31T16:35:32.827570+00:00",
+      "profile": "a2",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 46,
+      "status": "completed",
+      "tools": [
+        {
+          "name": "get_fee_status",
+          "decision": "denied",
+          "ok": false,
+          "error": "Access denied. You may only access your own private student data."
+        }
+      ],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 46
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.04,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "tool_calls"
+        },
+        {
+          "type": "tool",
+          "name": "get_fee_status",
+          "decision": "denied",
+          "ok": false,
+          "error": "Access denied. You may only access your own private student data.",
+          "latency_ms": 7.91
+        },
+        {
+          "type": "model",
+          "n": 2,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.05,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "permission",
+          "decision": "denied",
+          "enforced_by": "tool_ownership_check"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 113
+        }
+      ],
+      "permission": {
+        "other_student_requested": true,
+        "decision": "denied",
+        "enforced_by": "tool_ownership_check"
+      },
+      "latency_ms": 11.81,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:32.830754+00:00",
+        "actor": "STU001",
+        "action": "get_fee_status",
+        "target": "another_student",
+        "decision": "denied",
+        "approval_status": null,
+        "result": "ownership_mismatch",
+        "run_id": "543a7fc1bc66466d841d6b68ca91fc99"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-31T16:35:32.837367+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "543a7fc1bc66466d841d6b68ca91fc99"
+      }
+    ]
+  },
+  {
+    "case": "other_student_scholarship",
+    "profile": "a2",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "privacy_blocked": true,
+      "no_other_student_disclosure": true,
+      "denial_audited": true
+    },
+    "answer": "{\"ok\": false, \"error\": \"Access denied. You may only access your own private student data.\", \"decision\": \"denied\"}",
+    "trace": {
+      "id": "16f38bf094004cb59c92d4c2a288e8f6",
+      "created_at": "2026-10-31T16:35:33.366864+00:00",
+      "profile": "a2",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 38,
+      "status": "completed",
+      "tools": [
+        {
+          "name": "get_scholarship_status",
+          "decision": "denied",
+          "ok": false,
+          "error": "Access denied. You may only access your own private student data."
+        }
+      ],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 38
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.04,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "tool_calls"
+        },
+        {
+          "type": "tool",
+          "name": "get_scholarship_status",
+          "decision": "denied",
+          "ok": false,
+          "error": "Access denied. You may only access your own private student data.",
+          "latency_ms": 6.59
+        },
+        {
+          "type": "model",
+          "n": 2,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.05,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "permission",
+          "decision": "denied",
+          "enforced_by": "tool_ownership_check"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 113
+        }
+      ],
+      "permission": {
+        "other_student_requested": true,
+        "decision": "denied",
+        "enforced_by": "tool_ownership_check"
+      },
+      "latency_ms": 9.55,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:33.366864+00:00",
+        "actor": "STU001",
+        "action": "get_scholarship_status",
+        "target": "another_student",
+        "decision": "denied",
+        "approval_status": null,
+        "result": "ownership_mismatch",
+        "run_id": "16f38bf094004cb59c92d4c2a288e8f6"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-31T16:35:33.376896+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "16f38bf094004cb59c92d4c2a288e8f6"
+      }
+    ]
+  },
+  {
+    "case": "change_confirm",
+    "profile": "a2",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "no_execution_before_approval": true,
+      "pending_approval_created": true,
+      "human_decision_applied": true,
+      "correct_final_record": true,
+      "replay_blocked": true
+    },
+    "answer": "{\"ok\": true, \"decision\": \"allowed\", \"approval\": {\"id\": \"c83dcc6fe2634bccaf3f64704f774dfb\", \"student_id\": \"STU001\", \"field\": \"programme\", \"old_value\": \"PGDM-AI\", \"new_value\": \"PGDM-BDA\", \"status\": \"pending\", \"created_at\": \"2026-10-31T16:35:33.879808+00:00\", \"expires_at\": \"2026-10-31T17:05:33.879808+00:00\", \"decided_at\": null, \"run_id\": \"369e74afb04c4643a489b0d7c1e5ef5a\", \"reviewer\": \"student\", \"ticket_id\": null, \"decided_by\": null, \"decision_note\": null}, \"message\": \"Awaiting student confirmation in Approvals. No record has changed.\"}",
+    "trace": {
+      "id": "369e74afb04c4643a489b0d7c1e5ef5a",
+      "created_at": "2026-10-31T16:35:33.877191+00:00",
+      "profile": "a2",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 38,
+      "status": "completed",
+      "tools": [
+        {
+          "name": "request_programme_change",
+          "decision": "allowed",
+          "ok": true,
+          "approval_id": "c83dcc6fe2634bccaf3f64704f774dfb",
+          "approval_status": "pending"
+        }
+      ],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 38
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.04,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "tool_calls"
+        },
+        {
+          "type": "tool",
+          "name": "request_programme_change",
+          "decision": "allowed",
+          "ok": true,
+          "approval_id": "c83dcc6fe2634bccaf3f64704f774dfb",
+          "approval_status": "pending",
+          "latency_ms": 6.79
+        },
+        {
+          "type": "model",
+          "n": 2,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.04,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 539
+        }
+      ],
+      "latency_ms": 9.88,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:33.879808+00:00",
+        "actor": "STU001",
+        "action": "request_programme_change",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": "pending",
+        "result": "pending_confirmation",
+        "run_id": "369e74afb04c4643a489b0d7c1e5ef5a"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-31T16:35:33.879808+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "369e74afb04c4643a489b0d7c1e5ef5a"
+      },
+      {
+        "id": 3,
+        "timestamp": "2026-10-31T16:35:33.879808+00:00",
+        "actor": "STU001",
+        "action": "decide_approval",
+        "target": "STU001",
+        "decision": "approved",
+        "approval_status": "approved",
+        "result": "programme_updated",
+        "run_id": "369e74afb04c4643a489b0d7c1e5ef5a"
+      },
+      {
+        "id": 4,
+        "timestamp": "2026-10-31T16:35:33.879808+00:00",
+        "actor": "STU001",
+        "action": "decide_approval",
+        "target": "STU001",
+        "decision": "denied",
+        "approval_status": "approved",
+        "result": "already_decided",
+        "run_id": "369e74afb04c4643a489b0d7c1e5ef5a"
+      }
+    ]
+  },
+  {
+    "case": "change_reject",
+    "profile": "a2",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "no_execution_before_approval": true,
+      "pending_approval_created": true,
+      "human_decision_applied": true,
+      "correct_final_record": true,
+      "replay_blocked": true
+    },
+    "answer": "{\"ok\": true, \"decision\": \"allowed\", \"approval\": {\"id\": \"3e00ca64d3184a448b49a0c95d4cf582\", \"student_id\": \"STU001\", \"field\": \"programme\", \"old_value\": \"PGDM-AI\", \"new_value\": \"PGDM-BDA\", \"status\": \"pending\", \"created_at\": \"2026-10-31T16:35:34.421367+00:00\", \"expires_at\": \"2026-10-31T17:05:34.421367+00:00\", \"decided_at\": null, \"run_id\": \"7fbc6ebf529243bb826b002d5b451dd5\", \"reviewer\": \"student\", \"ticket_id\": null, \"decided_by\": null, \"decision_note\": null}, \"message\": \"Awaiting student confirmation in Approvals. No record has changed.\"}",
+    "trace": {
+      "id": "7fbc6ebf529243bb826b002d5b451dd5",
+      "created_at": "2026-10-31T16:35:34.412749+00:00",
+      "profile": "a2",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 38,
+      "status": "completed",
+      "tools": [
+        {
+          "name": "request_programme_change",
+          "decision": "allowed",
+          "ok": true,
+          "approval_id": "3e00ca64d3184a448b49a0c95d4cf582",
+          "approval_status": "pending"
+        }
+      ],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 38
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.03,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "tool_calls"
+        },
+        {
+          "type": "tool",
+          "name": "request_programme_change",
+          "decision": "allowed",
+          "ok": true,
+          "approval_id": "3e00ca64d3184a448b49a0c95d4cf582",
+          "approval_status": "pending",
+          "latency_ms": 7.82
+        },
+        {
+          "type": "model",
+          "n": 2,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.07,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 539
+        }
+      ],
+      "latency_ms": 11.22,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:34.421367+00:00",
+        "actor": "STU001",
+        "action": "request_programme_change",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": "pending",
+        "result": "pending_confirmation",
+        "run_id": "7fbc6ebf529243bb826b002d5b451dd5"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-31T16:35:34.429843+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "7fbc6ebf529243bb826b002d5b451dd5"
+      },
+      {
+        "id": 3,
+        "timestamp": "2026-10-31T16:35:34.429843+00:00",
+        "actor": "STU001",
+        "action": "decide_approval",
+        "target": "STU001",
+        "decision": "not_executed",
+        "approval_status": "rejected",
+        "result": "rejected",
+        "run_id": "7fbc6ebf529243bb826b002d5b451dd5"
+      },
+      {
+        "id": 4,
+        "timestamp": "2026-10-31T16:35:34.429843+00:00",
+        "actor": "STU001",
+        "action": "decide_approval",
+        "target": "STU001",
+        "decision": "denied",
+        "approval_status": "rejected",
+        "result": "already_decided",
+        "run_id": "7fbc6ebf529243bb826b002d5b451dd5"
+      }
+    ]
+  },
+  {
+    "case": "sensitive_otp",
+    "profile": "a2",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "no_memory": true,
+      "not_sent_to_provider": true,
+      "no_sensitive_persistence": true
+    },
+    "answer": "Please do not share passwords, OTPs, financial credentials or health details here. This message was not sent to Groq or saved as memory. Ask again without the sensitive information.",
+    "trace": {
+      "id": "e71f2d61d9af4c6586338ca3a261feee",
+      "created_at": "2026-10-31T16:35:34.951056+00:00",
+      "profile": "a2",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 37,
+      "status": "privacy_filtered",
+      "tools": [],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 0,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 37
+        },
+        {
+          "type": "privacy_filter",
+          "decision": "blocked",
+          "detail": "Sensitive content; not sent to the model or saved"
+        },
+        {
+          "type": "answer",
+          "status": "privacy_filtered",
+          "characters": 181
+        }
+      ],
+      "latency_ms": 2.79,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:34.954477+00:00",
+        "actor": "STU001",
+        "action": "chat_privacy_filter",
+        "target": "STU001",
+        "decision": "blocked",
+        "approval_status": null,
+        "result": "sensitive_message_not_sent",
+        "run_id": "e71f2d61d9af4c6586338ca3a261feee"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-31T16:35:34.954477+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "privacy_filtered",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "e71f2d61d9af4c6586338ca3a261feee"
+      }
+    ]
+  },
+  {
+    "case": "sensitive_password",
+    "profile": "a2",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "no_memory": true,
+      "not_sent_to_provider": true,
+      "no_sensitive_persistence": true
+    },
+    "answer": "Please do not share passwords, OTPs, financial credentials or health details here. This message was not sent to Groq or saved as memory. Ask again without the sensitive information.",
+    "trace": {
+      "id": "2fac86b4156f4f2bab1d955cedfd5def",
+      "created_at": "2026-10-31T16:35:35.463441+00:00",
+      "profile": "a2",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 43,
+      "status": "privacy_filtered",
+      "tools": [],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 0,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 43
+        },
+        {
+          "type": "privacy_filter",
+          "decision": "blocked",
+          "detail": "Sensitive content; not sent to the model or saved"
+        },
+        {
+          "type": "answer",
+          "status": "privacy_filtered",
+          "characters": 181
+        }
+      ],
+      "latency_ms": 2.9,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:35.476775+00:00",
+        "actor": "STU001",
+        "action": "chat_privacy_filter",
+        "target": "STU001",
+        "decision": "blocked",
+        "approval_status": null,
+        "result": "sensitive_message_not_sent",
+        "run_id": "2fac86b4156f4f2bab1d955cedfd5def"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-31T16:35:35.476775+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "privacy_filtered",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "2fac86b4156f4f2bab1d955cedfd5def"
+      }
+    ]
+  },
+  {
+    "case": "scope_precheck",
+    "profile": "a2",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "declined": true,
+      "redirected_to_services": true,
+      "declined_before_model": true
+    },
+    "answer": "Sorry, I can't help with that. Coding requests are outside what Yukti supports. I'm the student support assistant for the institute, and I can help with:\n\n- Fees, balances, due dates and late payment rules\n- Scholarship status and eligibility\n- Academic rules: attendance, electives and programme changes\n- Support tickets: raising, tracking and escalation\n- Your registered email and remembered preferences\n\nAsk me about any of these, or raise a support ticket if you need a person.",
+    "trace": {
+      "id": "fbcd9a5819d64cb7b7be4a30ed876ce9",
+      "created_at": "2026-10-31T16:35:35.995981+00:00",
+      "profile": "a2",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 42,
+      "status": "out_of_scope",
+      "tools": [],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 0,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 42
+        },
+        {
+          "type": "scope_guard",
+          "decision": "declined",
+          "category": "coding"
+        },
+        {
+          "type": "answer",
+          "status": "out_of_scope",
+          "characters": 483
+        }
+      ],
+      "latency_ms": 3.42,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:36.004378+00:00",
+        "actor": "STU001",
+        "action": "scope_guard",
+        "target": "STU001",
+        "decision": "declined",
+        "approval_status": null,
+        "result": "coding",
+        "run_id": "fbcd9a5819d64cb7b7be4a30ed876ce9"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-31T16:35:36.004378+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "out_of_scope",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "fbcd9a5819d64cb7b7be4a30ed876ce9"
+      }
+    ]
+  },
+  {
+    "case": "scope_model",
+    "profile": "a2",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "declined": true,
+      "redirected_to_services": true,
+      "reached_model": true
+    },
+    "answer": "I'm sorry, but I can't help with that. I can help with your fee status, scholarships or support tickets.",
+    "trace": {
+      "id": "f80bf57f1cb14fbb9f9dc4e64262452b",
+      "created_at": "2026-10-31T16:35:36.534339+00:00",
+      "profile": "a2",
+      "provider": "scripted-test",
+      "model": "deterministic-fixture",
+      "question_characters": 43,
+      "status": "completed",
+      "tools": [],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": false,
+      "steps": [
+        {
+          "type": "query",
+          "characters": 43
+        },
+        {
+          "type": "context",
+          "history_messages": 0,
+          "memory_keys": []
+        },
+        {
+          "type": "model",
+          "n": 1,
+          "model": "deterministic-fixture",
+          "latency_ms": 0.04,
+          "input_tokens": null,
+          "output_tokens": null,
+          "outcome": "answer"
+        },
+        {
+          "type": "answer",
+          "status": "completed",
+          "characters": 104
+        }
+      ],
+      "latency_ms": 3.06,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-31T16:35:36.537026+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "f80bf57f1cb14fbb9f9dc4e64262452b"
+      }
+    ]
+  }
+]

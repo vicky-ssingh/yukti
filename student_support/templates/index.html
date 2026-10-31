@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yukti · Student support</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+  <meta name="color-scheme" content="light dark">
+  <script src="{{ url_for('static', filename='theme.js') }}"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='student.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='usage.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='motion.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='skin.css') }}">
+  <script src="{{ url_for('static', filename='common.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='usage.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='login.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+  <div id="boot" class="boot" aria-busy="true"><span class="brand-mark" data-icon="chat"></span><span>Loading Yukti…</span></div>
+
+  <main id="login-screen" class="login" hidden>
+    <div class="login-main">
+    <div class="login-shell">
+      <a class="login-logo" href="/"><span class="brand-mark" data-icon="chat" data-size="16"></span>Yukti</a>
+      <form id="login-form" class="login-form" novalidate>
+        <h1>Sign in</h1>
+        <p class="login-sub">Student support for fees, policies and requests.</p>
+        <div class="field"><label for="user-id">Student or staff ID</label><input id="user-id" autocomplete="username" placeholder="STU001" required maxlength="20" spellcheck="false"></div>
+        <div class="field"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" required maxlength="200"></div>
+        <p id="login-error" class="error-text field" role="alert" hidden></p>
+        <button type="submit" class="primary wide login-submit"><span>Sign in</span></button>
+        <p class="login-staff">Staff? <a href="/admin">Go to the admin panel</a></p>
+      </form>
+      <section class="login-demo" aria-labelledby="demo-title">
+        <h2 id="demo-title">Try a demo account</h2>
+        <ul>
+          <li><button type="button" data-demo="STU001" data-password="CampusDemo!2026" aria-label="Anshika Sharma, Student, STU001: sign in"><span>Anshika Sharma</span><span class="demo-role">Student</span><code>STU001</code></button></li>
+          <li><button type="button" data-demo="STU002" data-password="CampusDemo!2026" aria-label="Ankit Raj Singh, Student, STU002: sign in"><span>Ankit Raj Singh</span><span class="demo-role">Student</span><code>STU002</code></button></li>
+          <li><button type="button" data-demo="ADM001" data-password="StaffDemo!2026" aria-label="Vicky Singh, Administrator, ADM001: sign in"><span>Vicky Singh</span><span class="demo-role">Administrator</span><code>ADM001</code></button></li>
+          <li><button type="button" data-demo="SUP001" data-password="StaffDemo!2026" aria-label="Ayush Kumar, Support agent, SUP001: sign in"><span>Ayush Kumar</span><span class="demo-role">Support agent</span><code>SUP001</code></button></li>
+        </ul>
+      </section>
+    </div>
+    <p class="login-foot">Coursework demonstration with a fictional institute and records. Never enter real credentials.</p>
+    </div>
+    <!-- Wide screens: a teal panel with a rotating example exchange and three points (login.js). -->
+    <aside id="login-aside" class="login-aside" aria-label="About Yukti"></aside>
+  </main>
+
+  <div id="workspace" class="app" hidden>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <aside class="sidebar" id="sidebar" aria-label="Navigation">
+      <div class="sidebar-head">
+        <a class="brand" href="/"><span class="brand-mark" data-icon="chat"></span>Yukti</a>
+        <button id="hide-sidebar" class="icon-button sidebar-hide" type="button" aria-controls="sidebar" title="Hide sidebar" data-icon="sidebar"></button>
+      </div>
+      <!-- Everything between the header and the footer scrolls together, with one scrollbar on the sidebar's edge. -->
+      <div class="sidebar-scroll">
+      <!-- New and Search sit at the top like nav rows; Search opens an inline field that filters the conversation list. -->
+      <div class="nav quick-actions">
+        <button id="new-chat" class="nav-item quick-new" type="button" data-icon="plus" title="New conversation (Ctrl+K)" aria-keyshortcuts="Control+K"><span>New</span></button>
+        <button id="search-open" class="nav-item" type="button" data-icon="search" aria-expanded="false" aria-controls="search-box" title="Search conversations"><span>Search</span></button>
+        <div id="search-box" class="quick-search" hidden>
+          <span class="quick-search-icon" data-icon="search" data-size="17"></span>
+          <label for="thread-search" class="sr-only">Search conversations</label>
+          <input id="thread-search" type="search" placeholder="Search conversations" autocomplete="off" maxlength="60">
+          <button id="search-close" class="icon-button" type="button" aria-label="Close search" title="Close search (Esc)" data-icon="x" data-size="15"></button>
+        </div>
+      </div>
+      <nav class="nav" aria-label="Main">
+        <button class="nav-item" data-view="chat" data-icon="chat">Chat</button>
+        <button class="nav-item" data-view="tickets" data-icon="ticket">Support tickets <span class="count" id="ticket-count" hidden></span></button>
+        <button class="nav-item" data-view="approvals" data-icon="shield">Approvals <span class="count" id="approval-count" hidden></span></button>
+      </nav>
+      <div class="thread-nav">
+        <div id="thread-list" class="thread-list" aria-label="Conversations"></div>
+      </div>
+      </div>
+      <div class="sidebar-foot">
+        <div class="user-row">
+          <div class="user-chip"><span class="avatar" id="avatar">?</span><div><strong id="student-name"></strong><small id="student-meta"></small></div></div>
+          <!-- Theme and sign out are in this menu. -->
+          <button id="settings-btn" class="icon-button settings-btn" type="button" aria-label="Settings" title="Settings" aria-haspopup="menu" aria-expanded="false" data-icon="settings"></button>
+        </div>
+      </div>
+      <!-- Last in the sidebar so it is the last Tab stop there; CSS pins it to the right edge. -->
+      <div class="sidebar-resizer" id="sidebar-resizer" role="separator" aria-orientation="vertical" aria-controls="sidebar" aria-label="Resize sidebar" title="Drag to resize · double-click to reset" tabindex="0"></div>
+    </aside>
+    <div class="scrim" id="scrim"></div>
+
+    <div class="main" id="main" role="main" tabindex="-1">
+      <header class="topbar">
+        <button class="icon-button menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false" data-icon="menu"></button>
+        <h1 id="page-title">Chat</h1>
+        <button id="title-menu-btn" class="icon-button title-menu-btn" type="button" aria-haspopup="menu" aria-expanded="false" aria-label="Conversation options" title="Conversation options" data-icon="chevronDown" hidden></button>
+        <span class="spacer"></span>
+        <div id="chat-actions" class="row">
+        </div>
+      </header>
+      <div id="announcement" class="banner info announcement" data-icon="sparkle" hidden></div>
+      <div id="config-banner" class="banner announcement" data-icon="alert" hidden><span><strong>Groq is not configured.</strong> Add <code>GROQ_API_KEY</code> to the local <code>.env</code> file and restart. Tickets, memory and history still work.</span></div>
+
+      <section id="view-chat" class="view chat-view">
+        <div class="chat-column">
+          <div id="messages" class="messages" role="log" aria-live="polite" aria-label="Conversation">
+            <div id="welcome" class="welcome">
+              <span class="welcome-mark" data-icon="bot" data-size="26"></span>
+              <p class="eyebrow" id="greeting-time">Welcome</p>
+              <h2>Hi <span id="first-name">there</span>, how can I help?</h2>
+              <p class="muted">Ask about fees, scholarships, academic rules or a support request. I'll check your own record or the knowledge base and show the sources I used.</p>
+              <p class="welcome-label">Popular questions</p>
+              <div id="welcome-topics" class="welcome-topics"></div>            </div>
+          </div>
+          <button id="jump-latest" class="jump-latest" type="button" hidden data-icon="arrowDown" data-size="15"><span>Jump to latest</span></button>
+          <form id="chat-form" class="composer">
+            <label for="message" class="sr-only">Your message</label>
+            <div class="composer-box">
+              <textarea id="message" rows="1" maxlength="2000" placeholder="Ask about fees, a policy, or a support ticket…" required></textarea>
+              <button id="send" type="submit" class="primary send" aria-label="Send" data-icon="send"></button>
+            </div>
+            <div class="composer-note"><span>Enter to send · Shift+Enter for a new line · Ctrl+K new conversation</span><span id="char-count" hidden></span></div>
+            <p class="composer-note privacy-note">Don't share passwords or OTPs. Conversations are saved to your account and can be read by authorised support staff.</p>
+          </form>
+        </div>
+        <aside id="side-panel" class="side-panel" aria-label="Trace and context">
+          <div class="panel-tabs">
+            <div class="tab-row" role="tablist" aria-label="Side panel">
+            <button role="tab" id="tab-trace" class="panel-tab" aria-selected="true" aria-controls="panel-trace" data-tab="trace">Trace</button>
+            <button role="tab" id="tab-sources" class="panel-tab" aria-selected="false" aria-controls="panel-sources" data-tab="sources">Sources <span class="tab-count" id="sources-count" hidden></span></button>
+            </div>
+            <button class="icon-button panel-close" id="close-panel" type="button" aria-label="Hide panel" title="Hide panel" aria-controls="side-panel" data-icon="panelRight"></button>
+          </div>
+          <div id="panel-trace" role="tabpanel" aria-labelledby="tab-trace" class="panel-body trace-panel"></div>
+          <div id="panel-sources" role="tabpanel" aria-labelledby="tab-sources" class="panel-body" hidden></div>
+        </aside>
+      </section>
+
+      <section id="view-tickets" class="view content" hidden>
+        <div class="section-head">
+          <div><p>Tickets you raised, their priority and status, and every update from support staff.</p></div>
+          <button id="new-ticket" class="primary" type="button" data-icon="plus" data-size="16"><span>New ticket</span></button>
+        </div>
+        <div class="tickets-layout">
+          <div id="tickets-list" class="ticket-cards"></div>
+          <div id="ticket-detail" class="card ticket-detail" hidden></div>
+        </div>
+      </section>
+
+      <section id="view-approvals" class="view content" hidden>
+        <div class="section-head"><div><p>Programme changes wait here for your confirmation and expire after 30 minutes. Registered email changes are approved or declined by support staff; follow them on their ticket. Nothing changes until the request is approved.</p></div></div>
+        <div id="approvals-list" class="stack"></div>
+      </section>
+
+      <section id="view-profile" class="view content" hidden>
+        <div class="section-head"><div><p>Your details and fees as recorded by the institute. They are read-only here.</p></div></div>
+        <div id="profile-stats" class="kpi-grid profile-stats" role="group" aria-label="At a glance"></div>
+        <div id="profile-actions" class="profile-actions" role="group" aria-label="Quick actions"></div>
+        <div class="profile-grid">
+        <div class="profile-side">
+        <div class="card card-pad profile-card">
+          <div class="profile-head"><span id="profile-avatar" class="avatar" aria-hidden="true"></span><h3 id="profile-name"></h3></div>
+          <dl id="profile-list" class="profile-list"></dl>
+          <p class="field-hint">To change your programme or registered email, ask in chat. Programme changes need your confirmation under Approvals; email changes are reviewed by support staff.</p>
+        </div>
+        <article class="card card-pad activity-card" aria-labelledby="activity-title">
+          <div class="account-head"><h3 id="activity-title">Recent activity</h3><button id="activity-all" class="link-button" type="button">All tickets</button></div>
+          <div id="profile-activity" class="activity-list"></div>
+        </article>
+        </div>
+        <div id="profile-account" class="profile-account"></div>
+        </div>
+      </section>
+
+      <section id="view-memory" class="view content" hidden>
+        <div class="section-head"><div><p>Preferences Yukti can use in any conversation. Only the allowed values can be stored, and you can remove them at any time.</p></div></div>
+        <div id="memory-list" class="stack"></div>
+        <form id="memory-form" class="card card-pad memory-form">
+          <h3>Remember a preference</h3>
+          <div class="form-grid">
+            <div class="field"><label for="memory-key">Preference</label><select id="memory-key"></select></div>
+            <div class="field" id="memory-value-field"><label for="memory-value">Value</label><select id="memory-value"></select></div>
+          </div>
+          <label class="checkbox field"><input id="memory-consent" type="checkbox" required> I want this remembered across conversations.</label>
+          <button class="primary" type="submit"><span>Save preference</span></button>
+        </form>
+      </section>
+
+      <section id="view-activity" class="view content" hidden>
+        <div class="section-head">
+          <div><p>Measurements from your own agent runs: tokens, response times, tools and outcomes.</p></div>
+          <a class="secondary" href="/api/export" download data-icon="download" data-size="16"><span>Export evidence</span></a>
+        </div>
+        <div class="usage-toolbar"><div id="usage-range"></div><span id="usage-note" class="usage-note"></span></div>
+        <div id="usage-kpis" class="kpi-grid" aria-label="Usage totals" role="group"></div>
+        <div class="usage-grid">
+          <article class="card usage-card"><div class="usage-card-head"><h3>Tokens over time</h3><span id="usage-bucket"></span></div><div id="usage-chart"></div></article>
+          <article class="card usage-card"><div class="usage-card-head"><h3>Outcomes</h3><span>Share of runs</span></div><div id="usage-outcomes"></div></article>
+        </div>
+        <div class="usage-grid even">
+          <article class="card usage-card"><div class="usage-card-head"><h3>Conversations by tokens</h3><span id="usage-threads-note"></span></div><div id="usage-threads" class="bar-list"></div></article>
+          <article class="card usage-card"><div class="usage-card-head"><h3>Tools used</h3><span>Calls</span></div><div id="usage-tools" class="bar-list"></div></article>
+        </div>
+        <h3 class="sub-head">Agent runs</h3>
+        <p id="runs-note" class="runs-note" hidden></p>
+        <div id="traces-list" class="stack"></div>
+      </section>
+
+      <section id="view-audit" class="view content" hidden>
+        <div class="section-head">
+          <div><p>Every recorded action on your account: sign-ins, tool calls, permission decisions and staff changes, newest first.</p></div>
+          <a class="secondary" href="/api/export" download data-icon="download" data-size="16"><span>Export evidence</span></a>
+        </div>
+        <div id="audit-filters" class="audit-filters" role="group" aria-label="Filter by decision"></div>
+        <div class="table-wrap"><table><caption id="audit-caption" class="sr-only">Audit events</caption><thead><tr><th scope="col">Time</th><th scope="col">Action</th><th scope="col">Decision</th><th scope="col">Result</th></tr></thead><tbody id="audit-list"></tbody></table></div>
+      </section>
+    </div>
+  </div>
+
+  <dialog id="ticket-dialog" class="dialog ticket-dialog">
+    <form id="ticket-form" method="dialog" novalidate>
+      <h2 class="dialog-title">Raise a support ticket</h2>
+      <p class="muted small" id="ticket-dialog-note">Support staff review tickets in the admin panel. Updates appear under Support tickets; no email is sent.</p>
+      <div class="field"><label for="ticket-subject">Subject</label><input id="ticket-subject" maxlength="120" required></div>
+      <div class="form-grid">
+        <div class="field"><label for="ticket-category">Category</label><select id="ticket-category"></select></div>
+        <div class="field"><label for="ticket-priority">Priority</label><select id="ticket-priority"></select></div>
+      </div>
+      <div class="field"><label for="ticket-description">Describe the issue</label><textarea id="ticket-description" maxlength="2000" required></textarea></div>
+      <p id="ticket-error" class="error-text" role="alert" hidden></p>
+      <div class="dialog-actions"><button type="button" class="secondary" value="cancel" id="ticket-cancel">Cancel</button><button type="submit" class="primary" id="ticket-submit"><span>Raise ticket</span></button></div>
+    </form>
+  </dialog>
+</body>
+</html>

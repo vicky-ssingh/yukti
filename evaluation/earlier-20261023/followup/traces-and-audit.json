@@ -1,0 +1,412 @@
+[
+  {
+    "case": "portal_failure",
+    "profile": "a1",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "correct_evidence": true
+    },
+    "answer": "Yes. According to the handbook, if the payment portal fails on the due date you may pay on the next working day **without a late charge** provided you:\n\n1. Report the failure to Finance on the original due date.  \n2. Attach a timestamped screenshot or transaction reference to an official support ticket.  \n3. Submit any supporting evidence through Finance (the chat demo cannot upload attachments).\n\nIf you haven\u2019t yet reported the issue, you can create a finance support request now and attach the evidence once you have it.  \n\n*Policy reference: PAYMENT\u201102*",
+    "trace": {
+      "id": "83da27e6a9554ad79c1a066179d69e98",
+      "created_at": "2026-10-23T06:42:13.883586+00:00",
+      "profile": "a1",
+      "provider": "groq",
+      "model": "openai/gpt-oss-20b",
+      "question_characters": 61,
+      "status": "completed",
+      "tools": [
+        {
+          "name": "search_policy",
+          "decision": "allowed",
+          "ok": true,
+          "chunk_ids": [
+            "PAYMENT-02",
+            "FEES-01"
+          ]
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "id": "PAYMENT-02",
+          "title": "Payment portal failure and next working day",
+          "text": "If the payment portal fails on the due date, a student may pay on the next working day\nwithout a late charge ONLY if they report the failure to Finance on the original due date\nand attach a timestamped screenshot or transaction reference to the official support ticket.\nWorking days are Monday through Friday excluding institute holidays. The agent has no\ninstitute holiday calendar and must not guess the exact next working date. If the report\nwas late or supporting evidence is missing, Finance must decide; an extension is not guaranteed.\nThe chat demo can create a ticket but does not upload attachments: submit evidence through Finance.",
+          "source": "Fictional student handbook",
+          "score": 15.058
+        },
+        {
+          "id": "FEES-01",
+          "title": "Tuition fees and balances",
+          "text": "Students can view their own assessed tuition, payments, outstanding balance and due date\nthrough student services. Scholarship amounts are reported separately: do not subtract an\naward from the outstanding balance unless a posted payment or credit records it.\nFor a dispute, create a finance support request. Do not invent a fee waiver.",
+          "source": "Fictional student handbook",
+          "score": 1.551
+        }
+      ],
+      "memory_used": [],
+      "model_calls": 2,
+      "input_tokens": 2174,
+      "output_tokens": 320,
+      "usage_complete": true,
+      "latency_ms": 3191.08,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 2
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-23T06:42:15.942559+00:00",
+        "actor": "STU001",
+        "action": "search_policy",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": null,
+        "result": "success",
+        "run_id": "83da27e6a9554ad79c1a066179d69e98"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-23T06:42:17.074483+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "83da27e6a9554ad79c1a066179d69e98"
+      }
+    ]
+  },
+  {
+    "case": "recall_new_session",
+    "profile": "a1",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "memory_selected": true
+    },
+    "answer": "You asked me to remember that you are enrolled in the **PGDM\u2011AI** programme.",
+    "trace": {
+      "id": "8178746f60144b72853a24a6803bc4fc",
+      "created_at": "2026-10-23T06:42:33.270970+00:00",
+      "profile": "a1",
+      "provider": "groq",
+      "model": "openai/gpt-oss-20b",
+      "question_characters": 41,
+      "status": "completed",
+      "tools": [],
+      "retrieved_evidence": [],
+      "memory_used": [
+        {
+          "key": "programme",
+          "value": "PGDM-AI"
+        }
+      ],
+      "model_calls": 1,
+      "input_tokens": 929,
+      "output_tokens": 82,
+      "usage_complete": true,
+      "latency_ms": 2561.98,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 1,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-23T06:42:33.179258+00:00",
+        "actor": "STU001",
+        "action": "remember_preference",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": null,
+        "result": "success",
+        "run_id": "previous-session"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-23T06:42:35.836569+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "8178746f60144b72853a24a6803bc4fc"
+      }
+    ]
+  },
+  {
+    "case": "support_request",
+    "profile": "a1",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "own_ticket_created": true
+    },
+    "answer": "Your finance support request has been created.  \n**Ticket ID:** TKT-08797418b3e9  \nStatus: open (local demo only \u2013 no real staff have been notified).  \n\nIf you need anything else, just let me know!",
+    "trace": {
+      "id": "8426059c45964670a48e98cdc0831c4d",
+      "created_at": "2026-10-23T06:42:51.674703+00:00",
+      "profile": "a1",
+      "provider": "groq",
+      "model": "openai/gpt-oss-20b",
+      "question_characters": 60,
+      "status": "completed",
+      "tools": [
+        {
+          "name": "create_support_request",
+          "decision": "allowed",
+          "ok": true,
+          "ticket_id": "TKT-08797418b3e9"
+        }
+      ],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 2,
+      "input_tokens": 1938,
+      "output_tokens": 230,
+      "usage_complete": true,
+      "latency_ms": 2582.01,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-23T06:42:52.837394+00:00",
+        "actor": "STU001",
+        "action": "create_support_request",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": null,
+        "result": "success",
+        "run_id": "8426059c45964670a48e98cdc0831c4d"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-23T06:42:54.254151+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "8426059c45964670a48e98cdc0831c4d"
+      }
+    ]
+  },
+  {
+    "case": "portal_failure",
+    "profile": "a2",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "correct_evidence": true
+    },
+    "answer": "Yes. According to the institute policy, if the payment portal fails on the due date you may pay on the next working day **without a late charge** provided you:\n\n1. Report the failure to Finance on the original due date, and  \n2. Attach a timestamped screenshot or transaction reference to an official support ticket.\n\nWorking days are Monday\u2011Friday, excluding institute holidays.  \nIf you haven\u2019t reported the failure or can\u2019t provide evidence, Finance will decide whether an extension is granted.  \n\nYou can create a finance support ticket here, and then submit the screenshot or reference through Finance. [PAYMENT-02]",
+    "trace": {
+      "id": "6f81cdce3cb34bacae4d48d404ffc944",
+      "created_at": "2026-10-23T06:43:09.820360+00:00",
+      "profile": "a2",
+      "provider": "groq",
+      "model": "openai/gpt-oss-20b",
+      "question_characters": 61,
+      "status": "completed",
+      "tools": [
+        {
+          "name": "search_policy",
+          "decision": "allowed",
+          "ok": true,
+          "chunk_ids": [
+            "PAYMENT-02",
+            "FEES-01"
+          ]
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "id": "PAYMENT-02",
+          "title": "Payment portal failure and next working day",
+          "text": "If the payment portal fails on the due date, a student may pay on the next working day\nwithout a late charge ONLY if they report the failure to Finance on the original due date\nand attach a timestamped screenshot or transaction reference to the official support ticket.\nWorking days are Monday through Friday excluding institute holidays. The agent has no\ninstitute holiday calendar and must not guess the exact next working date. If the report\nwas late or supporting evidence is missing, Finance must decide; an extension is not guaranteed.\nThe chat demo can create a ticket but does not upload attachments: submit evidence through Finance.",
+          "source": "Fictional student handbook",
+          "score": 15.058
+        },
+        {
+          "id": "FEES-01",
+          "title": "Tuition fees and balances",
+          "text": "Students can view their own assessed tuition, payments, outstanding balance and due date\nthrough student services. Scholarship amounts are reported separately: do not subtract an\naward from the outstanding balance unless a posted payment or credit records it.\nFor a dispute, create a finance support request. Do not invent a fee waiver.",
+          "source": "Fictional student handbook",
+          "score": 1.551
+        }
+      ],
+      "memory_used": [],
+      "model_calls": 2,
+      "input_tokens": 2330,
+      "output_tokens": 332,
+      "usage_complete": true,
+      "latency_ms": 1684.23,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 2
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-23T06:43:10.678874+00:00",
+        "actor": "STU001",
+        "action": "search_policy",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": null,
+        "result": "success",
+        "run_id": "6f81cdce3cb34bacae4d48d404ffc944"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-23T06:43:11.505991+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "6f81cdce3cb34bacae4d48d404ffc944"
+      }
+    ]
+  },
+  {
+    "case": "recall_new_session",
+    "profile": "a2",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "memory_selected": true
+    },
+    "answer": "You asked me to remember that you are enrolled in the **PGDM\u2011AI** programme.",
+    "trace": {
+      "id": "3c40466e010d4943beafeab37f710862",
+      "created_at": "2026-10-23T06:43:27.911204+00:00",
+      "profile": "a2",
+      "provider": "groq",
+      "model": "openai/gpt-oss-20b",
+      "question_characters": 41,
+      "status": "completed",
+      "tools": [],
+      "retrieved_evidence": [],
+      "memory_used": [
+        {
+          "key": "programme",
+          "value": "PGDM-AI"
+        }
+      ],
+      "model_calls": 1,
+      "input_tokens": 1007,
+      "output_tokens": 86,
+      "usage_complete": true,
+      "latency_ms": 1036.45,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 1,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-23T06:43:27.800254+00:00",
+        "actor": "STU001",
+        "action": "remember_preference",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": null,
+        "result": "success",
+        "run_id": "previous-session"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-23T06:43:28.948204+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "3c40466e010d4943beafeab37f710862"
+      }
+    ]
+  },
+  {
+    "case": "support_request",
+    "profile": "a2",
+    "checks": {
+      "run_completed": true,
+      "appropriate_tools": true,
+      "own_ticket_created": true
+    },
+    "answer": "Your finance support request has been created.  \n**Ticket ID:** TKT-a68ae4b3f4e2  \nStatus: open (local demo only \u2013 no real staff have been notified).  \n\nIf you need anything else, just let me know!",
+    "trace": {
+      "id": "a4d88a721e254001b3aa1fe27ec08afa",
+      "created_at": "2026-10-23T06:43:44.194744+00:00",
+      "profile": "a2",
+      "provider": "groq",
+      "model": "openai/gpt-oss-20b",
+      "question_characters": 60,
+      "status": "completed",
+      "tools": [
+        {
+          "name": "create_support_request",
+          "decision": "allowed",
+          "ok": true,
+          "ticket_id": "TKT-a68ae4b3f4e2"
+        }
+      ],
+      "retrieved_evidence": [],
+      "memory_used": [],
+      "model_calls": 2,
+      "input_tokens": 2096,
+      "output_tokens": 243,
+      "usage_complete": true,
+      "latency_ms": 2156.41,
+      "context": {
+        "history_messages": 0,
+        "memory_items": 0,
+        "policy_chunks": 0
+      }
+    },
+    "audit": [
+      {
+        "id": 1,
+        "timestamp": "2026-10-23T06:43:45.278364+00:00",
+        "actor": "STU001",
+        "action": "create_support_request",
+        "target": "STU001",
+        "decision": "allowed",
+        "approval_status": null,
+        "result": "success",
+        "run_id": "a4d88a721e254001b3aa1fe27ec08afa"
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-23T06:43:46.344546+00:00",
+        "actor": "STU001",
+        "action": "agent_run",
+        "target": "STU001",
+        "decision": "completed",
+        "approval_status": null,
+        "result": "trace_recorded",
+        "run_id": "a4d88a721e254001b3aa1fe27ec08afa"
+      }
+    ]
+  }
+]

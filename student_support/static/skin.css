@@ -1,0 +1,203 @@
+/* Teal & coral skin: a fresh, colourful look layered over the base design system.
+   Loaded last in both apps. Only tokens and surface styling change here; layout, behaviour and
+   accessibility rules stay in style.css, student.css and admin.css. Delete this file's <link> to revert. */
+
+/* ---------- Tokens: light (teal & coral) ---------- */
+:root {
+  --canvas: #f3faf8;
+  --surface: #ffffff;
+  --surface-2: #e9f5f2;
+  --ink: #10231f;
+  --ink-2: #2f4a44;
+  --muted: #55706a;          /* 5.1:1 on the page */
+  --line: #dcebe7;
+  --line-strong: #c6ddd7;
+  --field-line: #7b938d;     /* 3:1+ on page and cards: fields and bordered controls */
+  --brand: #0f766e;
+  --brand-hover: #115e59;
+  --on-brand: #ffffff;
+  --accent: #14b8a6;
+  --accent-ink: #0f766e;
+  --accent-soft: #e0f4f0;
+  --accent-line: #a7ddd3;
+  --on-accent: #ffffff;
+  --coral: #f97362;
+  --coral-ink: #c2410c;
+  --coral-soft: #ffede8;
+  --amber-bg: oklch(96.6% .028 80);
+  --amber-line: oklch(86% .06 78);
+  --amber-ink: oklch(47% .1 58);
+  --focus: #0f766e;
+  --bubble-user-bg: #e0f4f0;
+  --bubble-user-ink: #10231f;
+  --topbar-bg: rgb(243 250 248 / .88);
+  --story-bg: #134e4a;
+  --story-ink: #f2fbf9;
+  --story-muted: #bfe0d9;
+  --story-points: #d9efea;
+  /* Sign-in panel surfaces on --story-bg: card, question bubble and hairlines. */
+  --story-card: rgb(255 255 255 / .07);
+  --story-bubble: rgb(255 255 255 / .14);
+  --story-line: rgb(255 255 255 / .18);
+  --story-dot: rgb(255 255 255 / .55);
+  --brand-gradient: linear-gradient(135deg, #0f766e 0%, #059669 100%);
+  --radius: 18px;
+  --radius-sm: 12px;
+  --shadow: 0 1px 2px rgb(16 35 31 / .05);
+  --shadow-lg: 0 12px 40px rgb(16 35 31 / .14);
+  --font: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+}
+
+/* ---------- Tokens: dark (system preference or the toggle) ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --canvas: #0b1715; --surface: #11211e; --surface-2: #172d29;
+    --ink: #e9f6f3; --ink-2: #c3dcd6; --muted: #93b0aa;
+    --line: #1f3833; --line-strong: #2a4842; --field-line: #5f817a;
+    --brand: #2dd4bf; --brand-hover: #5eead4; --on-brand: #062a26;
+    --accent: #2dd4bf; --accent-ink: #5eead4; --accent-soft: #123630; --accent-line: #1f5a50;
+    --on-accent: #062a26; --focus: #5eead4;
+    --coral: #fb8a7a; --coral-ink: #fdba9f; --coral-soft: #3a1d17;
+    --amber-bg: oklch(26% .035 70); --amber-line: oklch(42% .07 70); --amber-ink: oklch(84% .11 80);
+    --bubble-user-bg: #153a34; --bubble-user-ink: #e9f6f3;
+    --topbar-bg: rgb(11 23 21 / .88);
+    --story-bg: #11211e; --story-ink: #f2fbf9; --story-muted: #b3d3cc; --story-points: #d2ebe5;
+    --brand-gradient: linear-gradient(135deg, #0f766e 0%, #047857 100%);
+    --shadow: none;
+    --shadow-lg: 0 12px 40px rgb(0 0 0 / .55);
+  }
+}
+:root[data-theme="dark"] {
+  --canvas: #0b1715; --surface: #11211e; --surface-2: #172d29;
+  --ink: #e9f6f3; --ink-2: #c3dcd6; --muted: #93b0aa;
+  --line: #1f3833; --line-strong: #2a4842; --field-line: #5f817a;
+  --brand: #2dd4bf; --brand-hover: #5eead4; --on-brand: #062a26;
+  --accent: #2dd4bf; --accent-ink: #5eead4; --accent-soft: #123630; --accent-line: #1f5a50;
+  --on-accent: #062a26; --focus: #5eead4;
+  --coral: #fb8a7a; --coral-ink: #fdba9f; --coral-soft: #3a1d17;
+  --amber-bg: oklch(26% .035 70); --amber-line: oklch(42% .07 70); --amber-ink: oklch(84% .11 80);
+  --bubble-user-bg: #153a34; --bubble-user-ink: #e9f6f3;
+  --topbar-bg: rgb(11 23 21 / .88);
+  --story-bg: #11211e; --story-ink: #f2fbf9; --story-muted: #b3d3cc; --story-points: #d2ebe5;
+  --brand-gradient: linear-gradient(135deg, #0f766e 0%, #047857 100%);
+  --shadow: none;
+  --shadow-lg: 0 12px 40px rgb(0 0 0 / .55);
+}
+
+/* ---------- Type: serif display headings, quiet sans body ---------- */
+body { letter-spacing: .002em; }
+h1, h2, .welcome h2, .login-story h1, .login-form h2, #page-title, .section-head h2, .panel-heading, .dialog-title,
+.ticket-detail h3, .ticket-head h2, .page h1, .page > header h2 {
+  font-family: var(--font-display); font-weight: 600; letter-spacing: -.005em;
+}
+.login-story h1 { font-weight: 500; font-size: clamp(2.2rem, 3.6vw, 3.2rem); line-height: 1.12; }
+.welcome h2 { font-size: clamp(1.7rem, 2.6vw, 2.15rem); font-weight: 500; }
+#page-title { font-size: 1.12rem; }
+.eyebrow, .nav-label, .thread-group, .welcome-label, .panel-subhead { letter-spacing: .12em; font-weight: 650; }
+
+/* ---------- Shape: pills for actions, soft radii, hairlines instead of shadows ---------- */
+.primary, .secondary, .danger, .ghost { border-radius: 999px; }
+.primary, .secondary { padding: 0 18px; }
+input, select, textarea { border-radius: 12px; }
+.card, .stat, .welcome-topics .topic, .ticket-row, .record, .panel-row, .demo, .dialog { box-shadow: none; }
+.badge { border-color: transparent; font-weight: 600; }
+
+/* ---------- Shell: one continuous paper surface ---------- */
+.sidebar { background: var(--canvas); border-right: 1px solid var(--line); }
+.topbar { border-bottom-color: var(--line); }
+.brand-mark { border-radius: 50%; }
+.nav-item { border-radius: 999px; padding: 8px 12px; }
+/* One selection language: a filled pill means "you are here"; hover is a lighter wash. */
+.nav-item[aria-current="page"] { background: var(--surface-2); color: var(--ink); box-shadow: none; font-weight: 600; }
+.nav-item:hover:not([aria-current="page"]) { background: color-mix(in oklch, var(--surface-2) 55%, transparent); }
+.nav-item[aria-current="page"] .icon { color: var(--accent-ink); }
+#new-chat { background: var(--surface); color: var(--ink); border: 1px solid var(--field-line); }
+#new-chat:hover { background: var(--accent-soft); border-color: var(--accent-line); }
+.thread-item { border-radius: 12px; }
+.thread-item[aria-current="true"] { background: var(--surface-2); box-shadow: none; }
+.thread-item:hover:not([aria-current="true"]) { background: color-mix(in oklch, var(--surface-2) 55%, transparent); }
+.thread-search { border-radius: 999px; background: var(--surface); }
+
+/* ---------- Chat: answers read like a page, not a card ---------- */
+.welcome-mark { background: transparent; border: 0; color: var(--accent-ink); width: auto; height: auto; }
+.bot-avatar { background: transparent; border-color: var(--line); color: var(--accent-ink); }
+.bubble-assistant { background: transparent; border: 0; padding: 4px 0; border-radius: 0; }
+.bubble-assistant.is-error { background: var(--danger-soft); border: 1px solid var(--danger-line); padding: 12px 16px; border-radius: 14px; }
+.msg-assistant.is-traced .bubble-assistant { box-shadow: none; border-left: 2px solid var(--accent); padding-left: 16px; border-radius: 0; }
+.bubble-user { border-radius: 20px 20px 6px 20px; padding: 11px 18px; }
+.md { line-height: 1.7; }
+.composer { background: transparent; border-top: 0; padding-bottom: 18px; }
+.composer-box { border-radius: 26px; padding: 7px 7px 7px 20px; background: var(--surface); }
+.send { border-radius: 50%; }
+.suggestion { border-color: var(--field-line); color: var(--ink-2); background: transparent; }
+.suggestion:hover { border-color: var(--accent-line); color: var(--accent-ink); background: var(--accent-soft); }
+.source-chip { border-radius: 999px; background: transparent; }
+.ticket-card { border-radius: 16px; }
+.topic-icon { border-radius: 50%; background: var(--surface-2); color: var(--accent-ink); border: 0; }
+.welcome-topics .topic { border-radius: 16px; }
+
+/* ---------- Side panel ---------- */
+.side-panel { background: var(--canvas); }
+.panel-tab[aria-selected="true"] { border-color: var(--ink); }
+.trace-stats div { background: var(--surface); }
+.trace-intro-mark { border-radius: 50%; background: transparent; }
+
+/* ---------- Admin ---------- */
+.stat:hover { transform: none; border-color: var(--line-strong); }
+.stat-icon { border-radius: 50%; }
+.glance > div a { background: transparent; }
+th { background: transparent; letter-spacing: .1em; }
+.table-wrap { border-radius: 14px; }
+.login-points .icon { color: var(--story-muted); }
+/* Minimal: the popular questions already offer starters, so the trace intro does not repeat them. */
+.trace-try { display: none; }
+
+/* Focus on fields: a 2px ring in the focus colour (teal). */
+input:focus, textarea:focus, select:focus { border-color: var(--focus); box-shadow: 0 0 0 1px var(--focus); }
+.composer-box:focus-within { border-color: var(--focus); box-shadow: 0 0 0 1px var(--focus); }
+
+/* Sources under an answer read as references (text, no border); follow-up questions stay the only pills. */
+.source-chip { border: 0; border-radius: 6px; background: transparent; padding: 4px 6px; min-height: 24px; color: var(--muted); }
+.source-chip strong { font: 600 .74rem/1 var(--mono); color: var(--ink); }
+.source-chip:hover { background: transparent; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.source-chip[aria-pressed="true"] { background: var(--surface-2); color: var(--ink); border: 0; }
+
+/* ---------- Colour accents ---------- */
+/* Logo mark: the brand gradient. */
+.brand-mark, .login-logo .brand-mark { background: var(--brand-gradient); color: #ffffff; }
+
+/* "You are here": a soft teal pill (nav items and the open conversation). */
+.nav-item[aria-current="page"] { background: var(--accent-soft); color: var(--accent-ink); }
+.nav-item[aria-current="page"] .icon { color: var(--accent-ink); }
+.thread-item[aria-current="true"] { background: var(--accent-soft); color: var(--accent-ink); }
+
+/* Icon tiles take turns through six soft tints, so lists of topics and figures read as colourful but calm. */
+:root {
+  --tint-1-bg: #e0f4f0; --tint-1-ink: #0f766e;
+  --tint-2-bg: #ffede8; --tint-2-ink: #c2410c;
+  --tint-3-bg: #e6f5fd; --tint-3-ink: #0369a1;
+  --tint-4-bg: #f3edff; --tint-4-ink: #6d28d9;
+  --tint-5-bg: #fdf2e1; --tint-5-ink: #b45309;
+  --tint-6-bg: #fdecef; --tint-6-ink: #be123c;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --tint-1-bg: #123630; --tint-1-ink: #5eead4; --tint-2-bg: #3a1d17; --tint-2-ink: #fdba9f;
+    --tint-3-bg: #10283a; --tint-3-ink: #7dd3fc; --tint-4-bg: #2a2050; --tint-4-ink: #c4b5fd;
+    --tint-5-bg: #2e2312; --tint-5-ink: #fcd34d; --tint-6-bg: #33161f; --tint-6-ink: #fda4af;
+  }
+}
+:root[data-theme="dark"] {
+  --tint-1-bg: #123630; --tint-1-ink: #5eead4; --tint-2-bg: #3a1d17; --tint-2-ink: #fdba9f;
+  --tint-3-bg: #10283a; --tint-3-ink: #7dd3fc; --tint-4-bg: #2a2050; --tint-4-ink: #c4b5fd;
+  --tint-5-bg: #2e2312; --tint-5-ink: #fcd34d; --tint-6-bg: #33161f; --tint-6-ink: #fda4af;
+}
+:is(.welcome-topics, .kpi-grid) > :nth-child(6n+1) { --tint-bg: var(--tint-1-bg); --tint-ink: var(--tint-1-ink); }
+:is(.welcome-topics, .kpi-grid) > :nth-child(6n+2) { --tint-bg: var(--tint-2-bg); --tint-ink: var(--tint-2-ink); }
+:is(.welcome-topics, .kpi-grid) > :nth-child(6n+3) { --tint-bg: var(--tint-3-bg); --tint-ink: var(--tint-3-ink); }
+:is(.welcome-topics, .kpi-grid) > :nth-child(6n+4) { --tint-bg: var(--tint-4-bg); --tint-ink: var(--tint-4-ink); }
+:is(.welcome-topics, .kpi-grid) > :nth-child(6n+5) { --tint-bg: var(--tint-5-bg); --tint-ink: var(--tint-5-ink); }
+:is(.welcome-topics, .kpi-grid) > :nth-child(6n+6) { --tint-bg: var(--tint-6-bg); --tint-ink: var(--tint-6-ink); }
+.welcome-topics .topic-icon, .kpi-grid .kpi-icon { background: var(--tint-bg, var(--accent-soft)); color: var(--tint-ink, var(--accent-ink)); border: 0; }
+.welcome-mark { color: var(--accent-ink); }

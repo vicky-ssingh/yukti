@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yukti Admin</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+  <meta name="color-scheme" content="light dark">
+  <script src="{{ url_for('static', filename='theme.js') }}"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='usage.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='motion.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='skin.css') }}">
+  <script src="{{ url_for('static', filename='common.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='usage.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='login.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='admin.js') }}" defer></script>
+</head>
+<body>
+  <div id="boot" class="boot" aria-busy="true"><span class="boot-spinner" aria-hidden="true"></span><span class="sr-only">Loading admin panel</span></div>
+
+  <main id="login" class="login" hidden>
+    <div class="login-main">
+    <div class="login-shell">
+      <a class="login-logo" href="/admin"><span class="brand-mark" data-icon="shield" data-size="16"></span>Yukti Admin</a>
+      <form id="login-form" class="login-form" novalidate>
+        <h1>Staff sign in</h1>
+        <p class="login-sub">Students sign in on the <a href="/">student app</a>.</p>
+        <div class="field"><label for="login-id">Staff ID</label><input id="login-id" name="user_id" autocomplete="username" placeholder="ADM001" required maxlength="20" spellcheck="false"></div>
+        <div class="field"><label for="login-password">Password</label><input id="login-password" name="password" type="password" autocomplete="current-password" required maxlength="200"></div>
+        <p id="login-error" class="error-text" role="alert" hidden></p>
+        <button type="submit" class="primary wide login-submit" id="login-submit"><span>Sign in</span></button>
+      </form>
+      <section class="login-demo" aria-labelledby="demo-title">
+        <h2 id="demo-title">Try a demo account</h2>
+        <ul>
+          <li><button type="button" data-demo="ADM001" aria-label="Vicky Singh, Administrator, ADM001: sign in"><span>Vicky Singh</span><span class="demo-role">Administrator</span><code>ADM001</code></button></li>
+          <li><button type="button" data-demo="SUP001" aria-label="Ayush Kumar, Support agent, SUP001: sign in"><span>Ayush Kumar</span><span class="demo-role">Support agent</span><code>SUP001</code></button></li>
+        </ul>
+      </section>
+    </div>
+    <p class="login-foot">Coursework demonstration with a fictional institute and records. Shared demo password: <code>StaffDemo!2026</code></p>
+    </div>
+    <!-- Wide screens: a black panel with an example exchange and how it works (login.js). -->
+    <aside id="login-aside" class="login-aside" aria-label="About Yukti"></aside>
+  </main>
+
+  <main id="student-notice" class="notice-page" hidden>
+    <div class="card card-pad notice-card">
+      <span class="notice-icon" data-icon="lock" data-size="26"></span>
+      <h2>This is the staff admin panel</h2>
+      <p class="muted">You are signed in with a student account. Student support is available in the student app.</p>
+      <div class="row notice-actions">
+        <a class="primary" href="/">Go to the student app</a>
+        <button type="button" class="secondary" id="notice-logout">Sign out</button>
+      </div>
+    </div>
+  </main>
+
+  <div id="app" class="app" hidden>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <aside class="sidebar" id="sidebar" aria-label="Admin navigation">
+      <div class="sidebar-head">
+        <a class="brand" href="#/overview"><span class="brand-mark" data-icon="shield"></span> Yukti Admin</a>
+        <button id="hide-sidebar" class="icon-button sidebar-hide" type="button" aria-controls="sidebar" title="Hide sidebar" data-icon="sidebar"></button>
+      </div>
+      <nav class="nav" id="nav" aria-label="Main"></nav>
+      <div class="sidebar-foot">
+        <a class="nav-item" href="/" data-icon="chat">Student app</a>
+        <div class="user-row">
+          <div class="user-chip"><span class="avatar" id="staff-avatar"></span><div><strong id="staff-name"></strong><small id="staff-role"></small></div></div>
+          <!-- Theme and sign out are in this menu. -->
+          <button id="settings-btn" class="icon-button settings-btn" type="button" aria-label="Settings" title="Settings" aria-haspopup="menu" aria-expanded="false" data-icon="settings"></button>
+        </div>
+      </div>
+      <!-- Last in the sidebar so it is the last Tab stop there; CSS pins it to the right edge. -->
+      <div class="sidebar-resizer" id="sidebar-resizer" role="separator" aria-orientation="vertical" aria-controls="sidebar" aria-label="Resize sidebar" title="Drag to resize · double-click to reset" tabindex="0"></div>
+    </aside>
+    <div class="scrim" id="scrim"></div>
+    <div class="main" id="main" role="main" tabindex="-1">
+      <header class="topbar">
+        <button type="button" class="icon-button menu-toggle" id="menu" data-icon="menu" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false"></button>
+        <h1 id="page-title">Overview</h1>
+        <span class="spacer"></span>
+        <span id="model-status" class="status-pill"></span>
+      </header>
+      <section class="content" id="content" tabindex="-1"></section>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+[
+  {"title": "Check My Fee Balance", "subtitle": "Fee Record", "icon": "wallet", "prompt": "What is my fee balance?"},
+  {"title": "Late Payment Penalties", "subtitle": "Late Policy", "icon": "calendar", "prompt": "What is the late fee if I pay after the due date?"},
+  {"title": "My Scholarship Status", "subtitle": "Scholarship", "icon": "award", "prompt": "What is my scholarship status?"},
+  {"title": "Merit Scholarship Criteria", "subtitle": "Merit Policy", "icon": "book", "prompt": "What are the merit scholarship criteria?"},
+  {"title": "Payment Portal Crash", "subtitle": "Payment Issue", "icon": "alert", "prompt": "The payment portal failed. Can I pay on the next working day?"},
+  {"title": "Create Support Ticket", "subtitle": "Help Desk", "icon": "ticket", "prompt": "Please create a support ticket: my payment portal crashed while paying."},
+  {"title": "75% Attendance Requirement", "subtitle": "Attendance", "icon": "check", "prompt": "What is the 75 per cent attendance requirement?"},
+  {"title": "Course Change Procedure", "subtitle": "Academics", "icon": "book", "prompt": "What is the course change procedure?"},
+  {"title": "Update Registered Email", "subtitle": "Verification", "icon": "shield", "prompt": "How do I update my registered email?"},
+  {"title": "Remember Programme & Room", "subtitle": "Memory", "icon": "user", "prompt": "Please remember my programme is PGDM-AI and my hostel room is B-204."},
+  {"title": "Recall From Memory", "subtitle": "Recall", "icon": "sparkle", "prompt": "What programme and room did I ask you to remember?"},
+  {"title": "Working Days Definition", "subtitle": "Calendar", "icon": "calendar", "prompt": "What counts as a working day?"},
+  {"title": "Escalation Process", "subtitle": "Escalation", "icon": "alert", "prompt": "My ticket was not answered, who do I escalate to?"}
+]

@@ -1,0 +1,108 @@
+/* Sign-in screens (student app and admin panel): one quiet column on the page background.
+   Loaded after style.css and before skin.css. */
+
+.login { background: var(--canvas); }
+.login-shell { flex: 1; display: flex; flex-direction: column; justify-content: center; width: min(100%, 360px); margin: 0 auto; padding: 56px 0 32px; }
+
+.login-logo { display: inline-flex; align-items: center; gap: 10px; align-self: flex-start; margin-bottom: 40px;
+              font-weight: 650; font-size: .98rem; color: var(--ink); text-decoration: none; }
+.login-logo .brand-mark { width: 28px; height: 28px; }
+
+.login-form { width: 100%; }
+.login-form h1 { font-size: 2.1rem; font-weight: 500; line-height: 1.2; margin: 0 0 6px; }
+.login-sub { color: var(--muted); margin: 0 0 28px !important; font-size: .94rem; }
+.login-sub a { color: var(--ink); text-underline-offset: 3px; }
+.login-form .field { margin-bottom: 14px; }
+.login-submit { min-height: 44px; margin-top: 6px; }
+
+.input-wrap { position: relative; }
+.input-wrap input { padding-right: 50px; }
+.input-action { position: absolute; right: 1px; top: 50%; transform: translateY(-50%); display: grid; place-items: center;
+                width: 44px; height: 44px; border-radius: 8px; color: var(--muted); }
+.input-action:hover { color: var(--ink); }
+.input-action:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+.caps-hint { margin: 6px 0 0; font-size: .8rem; color: var(--amber-ink); }
+.caps-hint:empty { margin: 0; }
+
+/* Demo accounts: a 2 × 2 grid of chips (name, role, ID) that sign in with one click */
+.login-demo { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line); }
+.login-demo h2 { margin: 0 0 10px; font: 600 .86rem/1.4 var(--font); color: var(--ink); letter-spacing: 0; text-transform: none; }
+.login-demo ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; }
+.login-demo button { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 2px 8px; width: 100%;
+                     min-height: 44px; padding: 9px 12px; border: 1px solid var(--line); border-radius: var(--radius-sm);
+                     background: var(--surface); text-align: left; font-size: .88rem; font-weight: 600; color: var(--ink);
+                     transition: border-color .15s, background .15s; }
+.login-demo button:hover { border-color: var(--accent-line); background: var(--accent-soft); }
+.login-demo button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.login-demo span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.demo-role { grid-column: 1 / -1; color: var(--muted); font-size: .78rem; font-weight: 400; }
+.login-demo code { grid-column: 2; grid-row: 1; font: 400 .72rem/1 var(--mono); color: var(--muted); background: none; padding: 0; border: 0; }
+
+.login-foot { width: min(100%, 360px); margin: 0 auto; padding: 0 0 28px; color: var(--muted); font-size: .78rem; line-height: 1.5; }
+.login-foot code { font: inherit; font-family: var(--mono); color: var(--ink-2); background: none; padding: 0; border: 0; }
+
+/* ---------- Two columns on wide screens: the form, and a calm solid-teal panel that fits one screen ---------- */
+.login { display: grid; grid-template-columns: minmax(0, 1fr); padding: 0; }
+.login-main { display: flex; flex-direction: column; min-height: 100dvh; padding: 0 20px; }
+.login-aside { display: none; }
+@media (min-width: 1000px) {
+  .login { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .login-aside { display: flex; flex-direction: column; justify-content: center; gap: clamp(20px, 4vh, 36px); position: sticky; top: 12px;
+                 height: calc(100dvh - 24px); margin: 12px 12px 12px 0; padding: clamp(24px, 5vh, 48px) clamp(32px, 4vw, 64px);
+                 border-radius: 24px; overflow: auto; background: var(--story-bg); color: var(--story-ink); }
+  .login-aside > * { width: min(100%, 480px); }
+}
+
+.sc-head { display: grid; gap: 10px; }
+.sc-kicker { margin: 0; font-size: .74rem; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; color: var(--story-muted); }
+.sc-title { margin: 0; max-width: 18ch; text-transform: none; letter-spacing: -.01em; color: var(--story-ink);
+            font: 400 clamp(1.5rem, 1.1rem + 1.2vw, 2rem)/1.2 var(--font-display, Georgia, serif); }
+
+/* One sample exchange; the dots switch examples and the label names the current one. */
+.sc-example { display: grid; gap: 10px; }
+.sc-card { display: grid; gap: 10px; min-height: 196px; align-content: start; padding: 18px 20px; border-radius: 16px; border: 1px solid var(--story-line); background: var(--story-card); }
+.sc-who { font-size: .7rem; font-weight: 650; letter-spacing: .1em; text-transform: uppercase; color: var(--story-muted); }
+.sc-q { justify-self: end; max-width: 85%; margin: 0; padding: 8px 14px; border-radius: 14px 14px 4px 14px; background: var(--story-bubble); font-size: .92rem; line-height: 1.5; color: var(--story-ink); }
+.sc-a { margin: 0; font-size: .95rem; line-height: 1.6; color: var(--story-ink); }
+.sc-a strong { font-weight: 650; }
+.sc-foot { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; margin: 2px 0 0; font-size: .78rem; color: var(--story-muted); }
+.sc-cite { padding: 1px 8px; border-radius: 6px; border: 1px solid var(--story-line); background: var(--story-card); font: 500 .74rem/1.6 var(--mono); color: var(--story-ink); }
+.sc-nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.sc-topic { font-size: .8rem; font-weight: 600; color: var(--story-muted); }
+.sc-dots { display: flex; gap: 2px; }
+.sc-dots button { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; }
+.sc-dots button::before { content: ""; width: 8px; height: 8px; border-radius: 999px; background: var(--story-dot); transition: width .2s, background .2s; }
+.sc-dots button[aria-pressed="true"]::before { width: 20px; background: var(--story-ink); }
+.sc-dots button:hover::before { background: var(--story-ink); }
+.sc-dots button:focus-visible { outline: 2px solid var(--story-ink); outline-offset: 0; }
+
+.sc-points { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.sc-points li { display: flex; align-items: flex-start; gap: 12px; }
+.sc-check { display: grid; place-items: center; flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--story-bubble); color: var(--story-ink); }
+.sc-points strong { display: block; font-size: .92rem; font-weight: 600; color: var(--story-ink); }
+.sc-sub { font-size: .8rem; color: var(--story-muted); }
+
+@keyframes sc-in { from { opacity: 0; transform: translateY(6px); } }
+@media (prefers-reduced-motion: no-preference) {
+  .sc-card.is-in > * { animation: sc-in .4s cubic-bezier(.2, .8, .2, 1) backwards; }
+  .sc-card.is-in > :nth-child(2) { animation-delay: .06s; } .sc-card.is-in > :nth-child(3) { animation-delay: .12s; } .sc-card.is-in > :nth-child(4) { animation-delay: .18s; }
+}
+
+/* Short screens: tighter spacing so the form and demo chips stay in view. */
+@media (max-height: 760px) and (min-width: 1000px) {
+  .login-shell { padding: 32px 0 20px; }
+  .login-logo { margin-bottom: 24px; }
+  .login-sub { margin-bottom: 20px !important; }
+  .login-demo { margin-top: 20px; }
+}
+@media (max-width: 420px) {
+  .login-shell { padding-top: 40px; }
+  .login-logo { margin-bottom: 32px; }
+  .login-demo code { display: none; }
+}
+
+/* Fields with an error (focus ring for all fields is in skin.css). */
+.login input[aria-invalid="true"] { border-color: var(--danger); }
+.login input[aria-invalid="true"]:focus { box-shadow: 0 0 0 1px var(--danger); }
+.login-staff { margin: 18px 0 0; font-size: .86rem; color: var(--muted); }
+.login-staff a { color: var(--ink); text-underline-offset: 3px; }
