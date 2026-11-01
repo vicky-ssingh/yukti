@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Yukti · Student support</title>
-  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg', v='yukti-y-1') }}" type="image/svg+xml">
   <meta name="color-scheme" content="light dark">
   <script src="{{ url_for('static', filename='theme.js') }}"></script>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -18,12 +18,12 @@
   <script src="{{ url_for('static', filename='app.js') }}" defer></script>
 </head>
 <body>
-  <div id="boot" class="boot" aria-busy="true"><span class="brand-mark" data-icon="chat"></span><span>Loading Yukti…</span></div>
+  <div id="boot" class="boot" aria-busy="true"><span class="brand-mark" aria-hidden="true"></span><span>Loading Yukti…</span></div>
 
   <main id="login-screen" class="login" hidden>
     <div class="login-main">
     <div class="login-shell">
-      <a class="login-logo" href="/"><span class="brand-mark" data-icon="chat" data-size="16"></span>Yukti</a>
+      <a class="login-logo" href="/"><span class="brand-mark" aria-hidden="true"></span>Yukti</a>
       <form id="login-form" class="login-form" novalidate>
         <h1>Sign in</h1>
         <p class="login-sub">Student support for fees, policies and requests.</p>
@@ -33,19 +33,10 @@
         <button type="submit" class="primary wide login-submit"><span>Sign in</span></button>
         <p class="login-staff">Staff? <a href="/admin">Go to the admin panel</a></p>
       </form>
-      <section class="login-demo" aria-labelledby="demo-title">
-        <h2 id="demo-title">Try a demo account</h2>
-        <ul>
-          <li><button type="button" data-demo="STU001" data-password="CampusDemo!2026" aria-label="Anshika Sharma, Student, STU001: sign in"><span>Anshika Sharma</span><span class="demo-role">Student</span><code>STU001</code></button></li>
-          <li><button type="button" data-demo="STU002" data-password="CampusDemo!2026" aria-label="Ankit Raj Singh, Student, STU002: sign in"><span>Ankit Raj Singh</span><span class="demo-role">Student</span><code>STU002</code></button></li>
-          <li><button type="button" data-demo="ADM001" data-password="StaffDemo!2026" aria-label="Vicky Singh, Administrator, ADM001: sign in"><span>Vicky Singh</span><span class="demo-role">Administrator</span><code>ADM001</code></button></li>
-          <li><button type="button" data-demo="SUP001" data-password="StaffDemo!2026" aria-label="Ayush Kumar, Support agent, SUP001: sign in"><span>Ayush Kumar</span><span class="demo-role">Support agent</span><code>SUP001</code></button></li>
-        </ul>
-      </section>
     </div>
     <p class="login-foot">Coursework demonstration with a fictional institute and records. Never enter real credentials.</p>
     </div>
-    <!-- Wide screens: a teal panel with a rotating example exchange and three points (login.js). -->
+    <!-- Wide screens: a black panel with an example exchange and how it works (login.js). -->
     <aside id="login-aside" class="login-aside" aria-label="About Yukti"></aside>
   </main>
 
@@ -53,7 +44,7 @@
     <a class="skip-link" href="#main">Skip to main content</a>
     <aside class="sidebar" id="sidebar" aria-label="Navigation">
       <div class="sidebar-head">
-        <a class="brand" href="/"><span class="brand-mark" data-icon="chat"></span>Yukti</a>
+        <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span>Yukti</a>
         <button id="hide-sidebar" class="icon-button sidebar-hide" type="button" aria-controls="sidebar" title="Hide sidebar" data-icon="sidebar"></button>
       </div>
       <!-- Everything between the header and the footer scrolls together, with one scrollbar on the sidebar's edge. -->

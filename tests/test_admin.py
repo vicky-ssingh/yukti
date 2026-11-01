@@ -280,11 +280,11 @@ def student_email(app):
 def test_email_change_creates_ticket_for_staff_review(app, client, headers):
     with app.app_context():
         service = ToolService("STU001", "run", "Change my email", app.extensions["handbook"])
-        assert not service.execute("request_email_change", {"email": "rohan@example.edu"})["ok"]
+        assert not service.execute("request_email_change", {"email": "ankit.raj.singh@yukti.com"})["ok"]
         assert not service.execute("request_email_change", {"email": "not-an-email"})["ok"]
     result = email_request(app)
     assert result["approval"]["reviewer"] == "staff" and result["ticket_id"] == result["approval"]["ticket_id"]
-    assert "support staff" in result["message"] and student_email(app) == "aanya@example.edu"
+    assert "support staff" in result["message"] and student_email(app) == "anshika.sharma@yukti.com"
     ticket = client.get(f"/api/tickets/{result['ticket_id']}").json
     assert ticket["subject"] == "Registered email change request" and ticket["source"] == "approval_request"
     assert email_request(app)["approval"]["id"] == result["approval"]["id"]  # a repeated request reuses the pending one
@@ -294,7 +294,7 @@ def test_student_cannot_approve_own_email_change(app, client, headers):
     approval = email_request(app)["approval"]
     response = client.post(f"/api/approvals/{approval['id']}/decision", json={"decision": "confirm"}, headers=headers)
     assert response.status_code == 403 and response.json["ticket_id"] == approval["ticket_id"]
-    assert student_email(app) == "aanya@example.edu"
+    assert student_email(app) == "anshika.sharma@yukti.com"
 
 
 def test_staff_approve_email_change_and_ticket_resolves(app, client, headers, admin):
@@ -321,7 +321,7 @@ def test_staff_decline_needs_reason_and_never_executes(app, client, headers, adm
     url = f"/api/admin/approvals/{result['approval']['id']}/decision"
     assert staff.post(url, json={"decision": "reject"}, headers=staff_headers).status_code == 400
     assert staff.post(url, json={"decision": "reject", "note": "Use your institute address."}, headers=staff_headers).json["status"] == "rejected"
-    assert student_email(app) == "aanya@example.edu"
+    assert student_email(app) == "anshika.sharma@yukti.com"
     assert "Use your institute address." in client.get(f"/api/tickets/{result['ticket_id']}").json["resolution"]
 
 
@@ -330,7 +330,7 @@ def test_email_approval_requires_permission(app, agent, admin):
     staff, staff_headers = agent
     url = f"/api/admin/approvals/{result['approval']['id']}/decision"
     assert staff.post(url, json={"decision": "approve"}, headers=staff_headers).status_code == 403
-    assert student_email(app) == "aanya@example.edu"
+    assert student_email(app) == "anshika.sharma@yukti.com"
     admin[0].put("/api/admin/permissions/support_agent", json={"permissions": ["tickets.view", "approvals.decide"]}, headers=admin[1])
     assert staff.post(url, json={"decision": "approve"}, headers=staff_headers).json["executed"]
 
@@ -342,7 +342,7 @@ def test_email_approval_rechecks_conflicts_at_decision_time(app, admin):
         get_db().commit()
     decided = admin[0].post(f"/api/admin/approvals/{result['approval']['id']}/decision", json={"decision": "approve"}, headers=admin[1])
     assert decided.status_code == 409 and decided.json["status"] == "conflict"
-    assert student_email(app) == "aanya@example.edu"
+    assert student_email(app) == "anshika.sharma@yukti.com"
 
 
 def test_chat_shows_ticket_not_student_approval_for_email_change(app, client, headers):

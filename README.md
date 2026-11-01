@@ -31,12 +31,36 @@ The app binds to loopback only and does not enable the debugger.
 No key is needed to inspect the UI, sign in, manage safe preferences, or run offline tests.
 Chat explicitly reports missing configuration; it does not substitute fake AI answers.
 
-| ID | Fictional user | Role | Demo password |
-|---|---|---|---|
-| STU001 | Anshika Sharma | Student, PGDM-AI | CampusDemo!2026 |
-| STU002 | Ankit Raj Singh | Student, PGDM-BDA | CampusDemo!2026 |
-| ADM001 | Vicky Singh | Administrator | StaffDemo!2026 |
-| SUP001 | Ayush Kumar | Support agent | StaffDemo!2026 |
+## Deployment
+
+The complete application is a Flask server with server-side SQLite state, sessions, Groq API
+calls, approvals, tickets and an admin panel. It is not deployable to Netlify as-is. Netlify can
+host a static frontend, but its serverless functions use ephemeral runtimes, so the Flask server
+and local SQLite database would need to be replaced or split into a separate backend and managed
+database.
+
+For a simple full-stack deployment, use a Python web-service host such as Render:
+
+1. Add a production WSGI server to `requirements.txt`, for example `gunicorn`.
+2. Create a Render Web Service connected to this repository.
+3. Use `pip install -r requirements.txt` as the build command.
+4. Use `gunicorn app:app` as the start command.
+5. Set `GROQ_API_KEY`, `GROQ_MODEL`, `SECRET_KEY`, `SEED_STAFF_PASSWORD` and `COOKIE_SECURE=true`
+   as environment variables in the host dashboard. Never commit `.env` or an API key.
+6. Replace the local SQLite database with PostgreSQL for durable multi-instance deployment, or
+   attach persistent storage if SQLite is being used for a small demonstration.
+7. Configure the service to listen on `0.0.0.0` and the host-provided `PORT` in production.
+
+The fictional demo accounts in this README are for local coursework only. Change the seeded staff
+password before making the application publicly reachable. The local SQLite database is useful for
+testing, but it is not a production backup, audit store or multi-instance database.
+
+| ID | Fictional user | Email | Role | Password |
+|---|---|---|---|---|
+| STU001 | Anshika Sharma | anshika.sharma@yukti.com | Student, PGDM-AI | Updated local password |
+| STU002 | Ankit Raj Singh | ankit.raj.singh@yukti.com | Student, PGDM-BDA | Updated local password |
+| ADM001 | Vicky Singh | admin@yukti.com | Administrator | Updated local password |
+| SUP001 | Ayush Kumar | ayush.kumar@yukti.com | Support agent | Updated local password |
 
 Everyone signs in at `/`; staff are sent to the admin panel at `/admin`. These public
 demonstration credentials are for this local fictional database only. Set `SEED_STAFF_PASSWORD`

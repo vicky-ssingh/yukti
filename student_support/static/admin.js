@@ -20,6 +20,8 @@ const sectionCount = (n) => `${n} section${n === 1 ? "" : "s"}`;
     {route: "activity", label: "Activity log", icon: "log", perm: "logs.view"},
     {route: "account", label: "My account", icon: "user"},
   ];
+  const SETTINGS_ROUTES = new Set(["kb", "usage", "activity", "settings"]);
+  const settingsPages = [];
   const SOURCES = {chat_agent: "Chat assistant", chat_button: "Chat message"};
   const EVENTS = {created: "Created", assigned: "Assignment", priority_changed: "Priority", status_changed: "Status",
                   comment: "Reply", note: "Internal note", resolved: "Resolved", closed: "Closed",
@@ -158,9 +160,13 @@ const sectionCount = (n) => `${n} section${n === 1 ? "" : "s"}`;
     const pill = $("model-status");
     pill.textContent = session.configured ? `Groq · ${session.model}` : "Groq not configured";
     pill.classList.toggle("off", !session.configured);
+    settingsPages.splice(0, settingsPages.length, ...NAV
+      .filter(item => SETTINGS_ROUTES.has(item.route) && (!item.perm || perms.has(item.perm)))
+      .map(item => ({text: item.route === "settings" ? "System settings" : item.label,
+        icon: item.icon, run: () => go(`#/${item.route}`)})));
     const nav = $("nav"); nav.replaceChildren();
     for (const item of NAV) {
-      if (item.perm && !perms.has(item.perm)) continue;
+      if (SETTINGS_ROUTES.has(item.route) || (item.perm && !perms.has(item.perm))) continue;
       const link = el("a", undefined, "nav-item", {href: `#/${item.route}`, "data-route": item.route});
       link.append(icon(item.icon), el("span", item.label));
       link.addEventListener("click", closeNav);
@@ -1034,7 +1040,7 @@ const sectionCount = (n) => `${n} section${n === 1 ? "" : "s"}`;
     }));
     CDLogin.enhance({password: $("login-password"), fields: [$("login-id"), $("login-password")], error: $("login-error")});
     CDLogin.showcase($("login-aside"), "staff");
-    CD.settingsMenu($("settings-btn"), logout);
+    CD.settingsMenu($("settings-btn"), logout, settingsPages);
     $("notice-logout").addEventListener("click", logout);
     CD.resizableSidebar({app: $("app"), handle: $("sidebar-resizer"), storageKey: "campus-admin-sidebar-width"});
     const sidebarCtl = CD.collapsible({watch: $("app"), hiddenClass: "sidebar-collapsed", hideButton: $("hide-sidebar"), showButton: $("menu"),

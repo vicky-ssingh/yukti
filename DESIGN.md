@@ -57,3 +57,9 @@ Never hard-code colours in page CSS; add a token instead.
 - Empty states use the illustrated `CD.empty` with next-step buttons.
 - Motion lives in `motion.css`, entirely inside `prefers-reduced-motion: no-preference`; entrance
   animations use `backwards` fill so nothing keeps a transform after it finishes.
+
+
+November 2026 update: violet primary, blue supporting accents, coral highlights and lavender surfaces replace the green theme. Login uses a left showcase and a right contained sign-in form, with stacked mobile layout. Current tokens and layout overrides are in static/skin.css.
+
+
+Current theme (1 November 2026): reference-inspired white canvas, light-gray sidebar, charcoal text, gray selection states and restrained terracotta branding. This supersedes earlier green and violet palettes. Login retains the reference layout with neutral surfaces. Dark mode uses neutral charcoal surfaces. Semantic status colors remain distinct. Theme tokens are in static/skin.css.

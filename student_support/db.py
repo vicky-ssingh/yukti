@@ -10,8 +10,8 @@ from werkzeug.security import generate_password_hash
 DEMO_PASSWORD = "CampusDemo!2026"
 STAFF_DEMO_PASSWORD = "StaffDemo!2026"
 STAFF_SEED = [
-    {"id": "ADM001", "name": "Vicky Singh", "email": "priya.nair@example.edu", "role": "admin"},
-    {"id": "SUP001", "name": "Ayush Kumar", "email": "arjun.rao@example.edu", "role": "support_agent"},
+    {"id": "ADM001", "name": "Vicky Singh", "email": "admin@yukti.com", "role": "admin"},
+    {"id": "SUP001", "name": "Ayush Kumar", "email": "ayush.kumar@yukti.com", "role": "support_agent"},
 ]
 
 
