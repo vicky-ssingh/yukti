@@ -202,7 +202,6 @@ difference must not be presented as isolated privacy-control overhead.
 | Working implementation | `app.py`, `student_support/` |
 | Fictional records / source handbook | `data/students.json`, `data/student_handbook.md` |
 | Privacy and approval explanation | `docs/PRIVACY_AND_APPROVALS.md` |
-| Demonstration script | `docs/DEMO_SCRIPT.md` |
 | Executed offline comparison | `evaluation/offline/comparison.md` |
 | Per-question evaluation table | `evaluation/offline/results.csv` |
 | Sample traces and audit records | `evaluation/offline/traces-and-audit.json` |

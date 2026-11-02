@@ -82,10 +82,8 @@ database effects; human-review answer correctness and mark it explicitly in the 
 
 ## Implementation status
 
-Stages 1–9 are implemented. Stage 10 has 97 passing automated tests, 26 passing scripted
-cases, a full live Groq comparison with 25/26 automatic checks passing, and an explicitly
-labelled assistant answer review. The A1 recall tool-choice issue and two answer-wording
-issues led to focused follow-up fixes and verification; original results are preserved.
-Stage 11 includes the README, privacy explanation, demo guide, offline and live comparisons,
-sample trace/audit records and live browser evidence. See `docs/VERIFICATION.md` for limits.
-The student can complete the separate human-review column before submission.
+Stages 1–9 are implemented. Stage 10 has 137 passing automated tests, 28 passing offline
+scenarios and a final live Groq comparison with 26/26 automatic checks passing. Stage 11
+includes the README, privacy explanation, offline and live comparisons, and sample trace/audit
+records. The live answer-accuracy column remains explicitly marked for human review before
+submission.
