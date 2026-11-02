@@ -146,7 +146,7 @@ The final live evaluation was run on **27 October 2026 at 05:11 UTC** with
 `openai/gpt-oss-20b` hosted by Groq. All **26/26 automated checks passed** with no
 provider errors. These checks validate tool selection, retrieval evidence, memory behaviour,
 privacy enforcement, approval state changes and sensitive-input handling; they do not replace
-human review of the natural-language answers.
+manual review of the natural-language answers.
 
 | Evaluation profile | Automated checks | Mean agent latency | Input tokens | Output tokens |
 |---|---:|---:|---:|---:|
@@ -165,10 +165,15 @@ The offline fixture evaluation passed **28/28 automated scenarios** (10 Assignme
 fixtures, its token counts are N/A and its latency is not comparable with Groq. The current
 regression suite was also verified on **2 November 2026: 137 tests passed**.
 
-**Answer accuracy status:** `PENDING_HUMAN_REVIEW`. Each live answer still needs to be checked
-against the rubric in [`evaluation/final/results.csv`](evaluation/final/results.csv). Therefore,
-the 26/26 figure must be described as the automated orchestration and safety pass rate, not as
-100% natural-language answer accuracy.
+**Answer accuracy review:** **26/26 passed** (A1 common 10/10, A2 common 10/10 and A2 safety
+6/6). Every saved answer was read against its case-specific rubric on 2 November 2026 and the
+result is recorded in [`evaluation/final/results.csv`](evaluation/final/results.csv). This was an
+AI-assisted manual review by Codex at the project owner's request, not independent human validation.
+
+**Deployed Groq verification:** on 2 November 2026 the Render service reported Groq configured
+with `openai/gpt-oss-20b`. An authenticated STU001 fee question completed successfully using
+`get_fee_status`: two model calls, 3,166 input tokens, 149 output tokens and 2,470.52 ms agent
+latency. The live answer correctly reported an INR 60,000 outstanding balance.
 
 The offline runner executes ten common scenarios for each assignment profile plus eight final
 safety scenarios (28 runs; the last two are out-of-scope guardrail cases added after the 27 October
@@ -178,9 +183,9 @@ orchestration and database effects. It is **not a claim of Groq answer accuracy 
 The live runner uses the same scenarios with real Groq calls and writes a timestamped directory.
 It spaces cases by 15 seconds by default to reduce rate-limit failures; use `--interval SECONDS`
 to adjust this. This between-case delay is excluded from measured agent latency.
-It checks observable tool/evidence/state outcomes and records actual token usage. Human answer
-review is explicitly pending: read each answer against the rubric in `results.csv`, mark
-`answer_accuracy_review` PASS/FAIL, and compute correct answers / reviewed questions for submission.
+It checks observable tool/evidence/state outcomes and records actual token usage. The saved final
+answers have also been manually checked against their rubrics, with the reviewer provenance
+disclosed above.
 Repetitions with the same model and account are recommended for a stable latency comparison.
 Provider failures remain failed rows, rather than being removed from the denominator.
 

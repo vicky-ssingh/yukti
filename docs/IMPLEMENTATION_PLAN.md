@@ -85,5 +85,5 @@ database effects; human-review answer correctness and mark it explicitly in the 
 Stages 1–9 are implemented. Stage 10 has 137 passing automated tests, 28 passing offline
 scenarios and a final live Groq comparison with 26/26 automatic checks passing. Stage 11
 includes the README, privacy explanation, offline and live comparisons, and sample trace/audit
-records. The live answer-accuracy column remains explicitly marked for human review before
-submission.
+records. The live answer-accuracy review is complete at 26/26, with its AI-assisted reviewer
+provenance explicitly disclosed.

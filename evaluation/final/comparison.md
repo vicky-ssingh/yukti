@@ -54,5 +54,5 @@ A1 and A2 are capability profiles of the same current implementation. Ownership 
 - The final profile adds sensitive-action proposals and explicit decisions while preserving ordinary tasks.
 - Approval cases check the record before and after confirm/reject and attempt a replay.
 - Sensitive-input cases verify zero model calls and no persistent raw message or memory.
-- Review live answers in traces-and-audit.json against each review_rubric in results.csv; fill answer_accuracy_review with PASS/FAIL and compute the reviewed accuracy before submission.
-- Live answers require human rubric review; automated keyword/tool checks alone do not establish answer accuracy.
+- A manual rubric pass on 2 November 2026 reviewed every saved answer: 26/26 passed. The review
+  was completed by Codex at the project owner's request and is not independent human validation.

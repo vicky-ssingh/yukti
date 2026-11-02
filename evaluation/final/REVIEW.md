@@ -4,8 +4,9 @@ Run on 27 October 2026 at 05:11 UTC using **openai/gpt-oss-20b hosted by Groq**,
 final code: knowledge base, saved conversations, ticket management and admin panel included.
 All student records are fictional. No API key is included in these artifacts.
 
-Source: `evaluation/live-20261027T051114Z/`. Its `comparison.md`, `results.csv` and
-`traces-and-audit.json` are copied unchanged into this directory.
+Source: `evaluation/live-20261027T051114Z/`. Its `comparison.md` and
+`traces-and-audit.json` are copied unchanged into this directory; `results.csv` also contains
+the completed rubric review described below.
 Historical comparison figures are summarized below; only the final evaluation artifacts are
 retained in the streamlined repository.
 
@@ -15,12 +16,13 @@ retained in the streamlined repository.
 |---|---:|---:|---:|
 | Scenarios | 10 | 10 | 6 |
 | Automatic checks passed | 10/10 | 10/10 | 6/6 |
-| Answer accuracy review | Pending | Pending | Pending |
+| Answer accuracy review | 10/10 | 10/10 | 6/6 |
 | Mean agent latency | 1,678.84 ms | 1,716.53 ms | 1,118.33 ms |
 | Input tokens | 18,395 | 20,746 | 7,889 |
 | Output tokens | 1,691 | 1,539 | 684 |
 
 - **26/26 automatic checks** passed with no provider errors.
+- **26/26 answers passed** the case-specific accuracy rubrics.
 - Safety mean latency includes the two OTP/password prefilters (about 3 ms each, zero model calls).
 - Token totals are API-reported usage only. The two prefiltered cases report N/A.
 
@@ -62,21 +64,19 @@ retained in the streamlined repository.
 - **OTP and password** (`sensitive_otp`, `sensitive_password`): blocked before reaching Groq,
   zero model calls, and no message or memory stored.
 
-## Answer accuracy review: pending
+## Answer accuracy review: complete
 
-`answer_accuracy_review` in `results.csv` is `PENDING_HUMAN_REVIEW` for every row. Read each
-answer in `traces-and-audit.json` against its `review_rubric`, mark PASS or FAIL, and report
-correct answers / reviewed answers. The two prefiltered cases return a fixed application
-message, not a model answer, so state whether they are counted.
+On **2 November 2026**, every answer in `traces-and-audit.json` was read against its corresponding
+`review_rubric` in `results.csv`. All **26/26** were marked `PASS`: Assignment 1 common 10/10,
+Assignment 2 common 10/10 and Assignment 2 safety 6/6. This was an AI-assisted manual rubric
+review completed by Codex at the project owner's request, not independent human validation.
 
-Points worth checking during review:
-
-- `a2 change_reject` asks the student to confirm but, unlike `change_confirm`, does not say that
-  no change has been made yet. It is accurate, but less explicit.
-- `a1 unknown_policy` offers a ticket "so the finance team can look into it" and `a2` "so the
-  finance team can provide the exact figure"; check whether either reads as a promise of staff action.
-- The model wrote section IDs in bold (**PAYMENT-02**) rather than in brackets, so they do not
-  become clickable citations in the answer text; the source chips under the answer still link them.
+The two prefiltered OTP/password cases are included because their fixed application responses
+correctly state that the sensitive input was neither sent to Groq nor saved. The less-explicit
+`a2 change_reject` wording remains accurate when combined with the recorded state checks: the
+programme stayed unchanged after rejection and replay was denied. The unknown-policy answers
+invent no refund percentage and only offer an in-app support ticket. PAYMENT-02 appears in the
+answers and the source chips provide the linked evidence.
 
 ## Measurement limits
 
@@ -93,5 +93,5 @@ unseen questions.
 ## Evidence files
 
 - `comparison.md`: automatic measurements and per-case table.
-- `results.csv`: per-case measurements, rubric and the pending review column.
+- `results.csv`: per-case measurements, rubric and completed accuracy review.
 - `traces-and-audit.json`: live answers, tool calls, evidence, permission decisions and audit rows.
