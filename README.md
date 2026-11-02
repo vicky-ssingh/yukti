@@ -6,6 +6,13 @@ and then with an indexed knowledge base, persistent follow-up chat, ticket manag
 role-based admin panel (see `docs/ENHANCEMENT_PLAN.md`).
 **Groq is the only live LLM provider. All student records and handbook policies are fictional.**
 
+## Live demo
+
+**[Open the deployed Yukti application](https://yukti-campus-desk.onrender.com)**
+
+The demonstration is hosted on Render's free web-service tier, so the first request after a
+period of inactivity may take a short time while the service starts.
+
 ## Run locally (Windows PowerShell)
 
 Python 3.11+ recommended. A project virtual environment has already been prepared in this workspace.
