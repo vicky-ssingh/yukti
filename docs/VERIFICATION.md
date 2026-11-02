@@ -53,10 +53,11 @@ and a staff-follow-up promise for a local-only ticket. The model instructions an
 result were corrected, along with instructions to recall preferences without a record lookup.
 Focused live follow-up evidence is stored separately from the unchanged full-run measurements.
 All six focused live checks and assistant answer reviews passed after the corrections.
-These 23 October results are kept in `evaluation/earlier-20261023/`.
+The historical artifacts were removed when the repository was streamlined; this document retains
+their summary.
 
-A 27 October 03:47 UTC run (`evaluation/live-20261027T034721Z/`, kept in
-`evaluation/earlier-20261027-0347/`) passed 26/26 automatic checks: A1 10/10, A2 common 10/10, A2 safety 6/6.
+A 27 October 03:47 UTC run passed 26/26 automatic checks: A1 10/10, A2 common 10/10,
+A2 safety 6/6.
 Mean latencies: A1 common 1,978.61 ms (1,413.53 ms without one slow 7,064 ms run);
 A2 common 1,535.93 ms; A2 safety 1,021.65 ms.
 
@@ -68,7 +69,6 @@ See `evaluation/final/REVIEW.md` and `docs/LIVE_EVALUATION_NOTES.md` for the rev
 
 The browser fee question returned the correct data through a real Groq tool round trip and
 showed API token counts. The locally running server has been restarted with the final fixes.
-Screenshots show the actual app: the original setup state and the later live fee answer.
 
 These finite test results and assistant review are not independent human validation or a
 guarantee of correctness on unseen questions. The CSV retains a separate human-review column.

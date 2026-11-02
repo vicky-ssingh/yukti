@@ -133,6 +133,36 @@ flowchart LR
 .\.venv\Scripts\python.exe scripts/evaluate.py --live
 ```
 
+### Evaluation results
+
+The final live evaluation was run on **27 October 2026 at 05:11 UTC** with
+`openai/gpt-oss-20b` hosted by Groq. All **26/26 automated checks passed** with no
+provider errors. These checks validate tool selection, retrieval evidence, memory behaviour,
+privacy enforcement, approval state changes and sensitive-input handling; they do not replace
+human review of the natural-language answers.
+
+| Evaluation profile | Automated checks | Mean agent latency | Input tokens | Output tokens |
+|---|---:|---:|---:|---:|
+| Assignment 1 common scenarios | 10/10 | 1,678.84 ms | 18,395 | 1,691 |
+| Assignment 2 common scenarios | 10/10 | 1,716.53 ms | 20,746 | 1,539 |
+| Assignment 2 safety scenarios | 6/6 | 1,118.33 ms | 7,889 | 684 |
+
+The safety latency includes two OTP/password requests blocked in about 3 ms before any model
+call; those two cases used zero model tokens. Cross-student requests were denied without exposing
+another student's data. Programme-change tests verified pending state, confirmation, rejection
+and replay protection. The complete per-case results and traces are in
+[`evaluation/final/`](evaluation/final/).
+
+The offline fixture evaluation passed **28/28 automated scenarios** (10 Assignment 1 common,
+10 Assignment 2 common and 8 Assignment 2 safety/scope scenarios). Because it uses scripted
+fixtures, its token counts are N/A and its latency is not comparable with Groq. The current
+regression suite was also verified on **2 November 2026: 137 tests passed**.
+
+**Answer accuracy status:** `PENDING_HUMAN_REVIEW`. Each live answer still needs to be checked
+against the rubric in [`evaluation/final/results.csv`](evaluation/final/results.csv). Therefore,
+the 26/26 figure must be described as the automated orchestration and safety pass rate, not as
+100% natural-language answer accuracy.
+
 The offline runner executes ten common scenarios for each assignment profile plus eight final
 safety scenarios (28 runs; the last two are out-of-scope guardrail cases added after the 27 October
 live runs, which therefore have 26). It uses **scripted test fixtures**, reports tokens as N/A, and measures code
@@ -171,8 +201,6 @@ difference must not be presented as isolated privacy-control overhead.
 | Sample traces and audit records | `evaluation/offline/traces-and-audit.json` |
 | Live results after you run them | `evaluation/live-TIMESTAMP/` (ignored by Git) |
 | Final live comparison (27 Oct 2026, 05:11 UTC) and review | `evaluation/final/REVIEW.md` |
-| Live run before the enhancements (27 Oct 2026, 03:47 UTC) | `evaluation/earlier-20261027-0347/` |
-| Earlier live run (23 Oct 2026) with follow-up | `evaluation/earlier-20261023/` |
 | Automated regression tests | `tests/` |
 | Verified dependency versions | `requirements-lock.txt` |
 

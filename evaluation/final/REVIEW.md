@@ -6,8 +6,8 @@ All student records are fictional. No API key is included in these artifacts.
 
 Source: `evaluation/live-20261027T051114Z/`. Its `comparison.md`, `results.csv` and
 `traces-and-audit.json` are copied unchanged into this directory.
-Earlier results are kept as dated directories:
-`evaluation/earlier-20261027-0347/` (before the enhancements) and `evaluation/earlier-20261023/`.
+Historical comparison figures are summarized below; only the final evaluation artifacts are
+retained in the streamlined repository.
 
 ## Results
 
@@ -95,6 +95,3 @@ unseen questions.
 - `comparison.md`: automatic measurements and per-case table.
 - `results.csv`: per-case measurements, rubric and the pending review column.
 - `traces-and-audit.json`: live answers, tool calls, evidence, permission decisions and audit rows.
-- `../earlier-20261027-0347/`: the run before the enhancements, with its review.
-- `../earlier-20261023/`: the first full run, its assistant review and focused follow-up.
-- `../../docs/screenshots/live-fee-answer.png`: browser answer with tool and token evidence.

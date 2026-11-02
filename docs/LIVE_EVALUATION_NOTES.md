@@ -60,14 +60,14 @@ Only the three affected scenarios are rerun in both profiles after this change. 
 results are reported separately, rather than substituted into the full comparison.
 
 The focused run `evaluation/live-20261023T064212Z/` passed all six automatic checks and
-all six assistant answer reviews. It is copied to `evaluation/earlier-20261023/followup/`.
-The 23 October full comparison and its review are kept in `evaluation/earlier-20261023/`.
+all six assistant answer reviews. The historical artifacts were removed when the repository was
+streamlined; this document retains their summary.
 
 ## Final run (27 October 2026)
 
 After narrowing the privacy filter, auditing cross-student refusals and adding memory items to
-the evidence column, the full suite was rerun in `evaluation/live-20261027T034721Z/`, now kept in
-`evaluation/earlier-20261027-0347/`. It passed 26/26 automatic checks with no provider errors.
+the evidence column, the full suite was rerun on 27 October 2026 at 03:47 UTC. It passed 26/26
+automatic checks with no provider errors; the historical artifacts are no longer retained.
 
 ## Final run after the enhancements (27 October 2026, 05:11 UTC)
 
